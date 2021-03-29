@@ -1,6 +1,6 @@
 {
   "name": "@totea/core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "use decorator and js to build nodejs server",
   "scripts": {
     "test": "nodemon --exec babel-node test/mongone.js",
