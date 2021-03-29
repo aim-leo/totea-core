@@ -1,0 +1,90 @@
+{
+  "name": "@totea/core",
+  "version": "1.0.0",
+  "description": "use decorator and js to build nodejs server",
+  "scripts": {
+    "test": "nodemon --exec babel-node test/mongone.js",
+    "release": "standard-version && npm run push && npm run pub2npm",
+    "release:d": "standard-version --dry-run",
+    "push": "git push --follow-tags origin master",
+    "pub2npm": "nrm use npm && npm publish",
+    "lint": "node_modules/eslint/bin/eslint.js decorator helper index.js --fix",
+    "prettier": "npx prettier decorator helper index.js -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "deep-extend": "^0.6.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "http-errors": "^1.8.0",
+    "reflect-metadata": "^0.1.13",
+    "sort-route-addresses": "^0.0.3",
+    "tegund": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "nodemon": "^2.0.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.21.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "jest": "^26.6.3",
+    "standard-version": "^9.1.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "jest": true
+    },
+    "extends": [
+      "standard"
+    ],
+    "rules": {
+      "prefer-promise-reject-errors": 0,
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "never",
+          "named": "never",
+          "asyncArrow": "never"
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none",
+    "arrowParens": "avoid"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
