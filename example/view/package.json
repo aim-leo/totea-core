@@ -1,0 +1,17 @@
+{
+  "name": "totea-example-view",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pug": "^3.0.2"
+  }
+}

@@ -1,23 +1,28 @@
 require('reflect-metadata')
 
+const humps = require('humps')
+
+const { object } = require('tegund')
+
 const { routeMixin } = require('./mixin')
 
 const express = require('../helper/express')
 
-const Controller = name => Target => {
+const controllerParamsInterface = object({})
+
+const Controller = (name, option = {}) => Target => {
   const nameFromDecorator = Reflect.getMetadata('nameFromDecorator', Target)
-
-  if (!name && !nameFromDecorator) {
-    throw new Error('Controller expected a string type name')
-  }
-
   return class extends Target {
-    constructor() {
+    constructor(_name, _option) {
       super()
+
+      Object.assign(option, _option)
+      controllerParamsInterface.assert(option)
 
       Object.assign(this, routeMixin)
 
-      this.name = name || nameFromDecorator
+      this.name = this._formatName(_name)
+      this.option = option
 
       this._router = express.Router()
       this._isToteaController = true
@@ -29,13 +34,34 @@ const Controller = name => Target => {
     }
 
     get url() {
-      return (this.name[0] !== '/' ? '/' : '') + this.name
+      return '/' + humps.decamelize(this.name, { separator: '-' })
     }
 
     getRouter() {
       this._assignRouterFromDecorator()
 
       return this._router
+    }
+
+    _formatName(arg) {
+      let controllerName = arg || name || nameFromDecorator
+
+      if (typeof controllerName !== 'string') {
+        throw new Error('Controller expected a string type name')
+      }
+
+      controllerName = controllerName.trim()
+      if (controllerName[0] === '/') controllerName = controllerName.substr(1)
+
+      if (!controllerName) {
+        throw new Error('Controller expected a string type name')
+      }
+
+      if (controllerName.indexOf('/') !== -1) {
+        throw new Error('Controller name can not have char: /')
+      }
+
+      return humps.camelize(controllerName)
     }
   }
 }

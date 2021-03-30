@@ -5,6 +5,8 @@ const createHttpError = require('http-errors')
 const { isObject } = require('tegund')
 const routerOrder = require('sort-route-addresses')
 
+const {kidnap  } = require('../helper')
+
 const routeMixin = {
   _assignRouterFromDecorator() {
     // find out the global middleware
@@ -43,8 +45,15 @@ const routeMixin = {
       for (const url of routeKeys) {
         // get middleware
         const middleware = middlewareFromDecorator[list[url].name] || []
+        
+        console.log(`[totea route]: ${method} ${this.url ? this.url + url : url}`)
 
         this[method](url, ...middleware, async (req, res, next) => {
+          // kidnap res.sendFile, after called this method, don't response the request
+          kidnap(res, 'sendFile', () => {
+            res.__fileSent__ = true
+          })
+
           try {
             const result = await list[url].call(this, {
               req,
@@ -58,7 +67,7 @@ const routeMixin = {
 
             if (result instanceof Error) next(result)
 
-            if (res.headersSent) return
+            if (res.headersSent || res.__fileSent__) return
 
             if (!result) {
               return next(createHttpError(500))

@@ -1,4 +1,5 @@
 require('reflect-metadata')
+const humps = require('humps')
 
 const METHODS = ['Get', 'Post', 'Delete', 'Put', 'Patch']
 
@@ -17,7 +18,9 @@ function Route(httpMethod, url) {
 
     if (!routeFromDecorator[httpMethod]) routeFromDecorator[httpMethod] = {}
 
-    routeFromDecorator[httpMethod][url || key] = target[key]
+    const methodUrl = '/' + humps.decamelize(key, { separator: '-' })
+
+    routeFromDecorator[httpMethod][url || methodUrl] = target[key]
 
     Reflect.defineMetadata('routeFromDecorator', routeFromDecorator, target)
   }

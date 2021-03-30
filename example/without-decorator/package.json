@@ -1,0 +1,10 @@
+{
+  "name": "totea-example-without-decorator",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
