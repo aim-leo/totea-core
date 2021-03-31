@@ -15,13 +15,13 @@ function Middleware(callback) {
     // if the key is undefine, assign it to root
     if (!key) {
       middlewareFromDecorator = middlewareFromDecorator || []
-      middlewareFromDecorator.push(callback)
+      middlewareFromDecorator.unshift(callback)
     } else {
       middlewareFromDecorator = middlewareFromDecorator || {}
 
       if (!middlewareFromDecorator[key]) middlewareFromDecorator[key] = []
 
-      middlewareFromDecorator[key].push(callback)
+      middlewareFromDecorator[key].unshift(callback)
     }
 
     Reflect.defineMetadata(

@@ -5,7 +5,7 @@ const createHttpError = require('http-errors')
 const { isObject } = require('tegund')
 const routerOrder = require('sort-route-addresses')
 
-const {kidnap  } = require('../helper')
+const { kidnap } = require('../helper')
 
 const routeMixin = {
   _assignRouterFromDecorator() {
@@ -45,8 +45,10 @@ const routeMixin = {
       for (const url of routeKeys) {
         // get middleware
         const middleware = middlewareFromDecorator[list[url].name] || []
-        
-        console.log(`[totea route]: ${method} ${this.url ? this.url + url : url}`)
+
+        console.log(
+          `[totea route]: ${method} ${this.url ? this.url + url : url}`
+        )
 
         this[method](url, ...middleware, async (req, res, next) => {
           // kidnap res.sendFile, after called this method, don't response the request
@@ -73,7 +75,7 @@ const routeMixin = {
               return next(createHttpError(500))
             }
 
-            if (isObject(result) && result.message) {
+            if (isObject(result) && (result.message || result.code)) {
               return res.json({ code: 200, ...result })
             }
 

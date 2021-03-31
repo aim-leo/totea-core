@@ -1,11 +1,11 @@
 require('reflect-metadata')
 
-const { ObjectT } = require('tegund')
+const { ObjectT, isObject } = require('tegund')
 const createHttpError = require('http-errors')
 
 const PARAMETERS = ['Body', 'Query', 'Params', 'Header']
 
-function Parameter(paramType, validator) {
+function Parameter(paramType, validator, errorMessage) {
   if (typeof paramType !== 'string') {
     throw new Error('paramType expected a string')
   }
@@ -18,9 +18,12 @@ function Parameter(paramType, validator) {
 
   if (validator instanceof ObjectT) {
     const t = validator
-    validator = val => t.assert(val)
+    validator = val => t.test(val)
+  } else if (isObject(validator)) {
+    const t = new ObjectT(validator)
+    validator = val => t.test(val)
   } else if (typeof validator !== 'function') {
-    throw new Error('validator expected a ObjectT or a function')
+    throw new Error('validator expected a ObjectT || object || function')
   }
 
   return function (target, key) {
@@ -36,12 +39,12 @@ function Parameter(paramType, validator) {
     middlewareFromDecorator = middlewareFromDecorator || {}
     if (!middlewareFromDecorator[key]) middlewareFromDecorator[key] = []
 
-    middlewareFromDecorator[key].push((req, res, next) => {
+    middlewareFromDecorator[key].unshift((req, res, next) => {
       const data = req[paramType]
       const result = validator(data)
 
       if (result === false || result instanceof Error) {
-        throw createHttpError(400)
+        throw createHttpError(400, errorMessage || result.message)
       }
 
       next()
@@ -58,7 +61,7 @@ function Parameter(paramType, validator) {
 const parameters = {}
 
 PARAMETERS.forEach(item => {
-  parameters[item] = url => Parameter(item, url)
+  parameters[item] = (...args) => Parameter(item, ...args)
 })
 
 module.exports = {
