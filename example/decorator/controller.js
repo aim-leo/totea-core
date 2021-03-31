@@ -6,6 +6,11 @@ class ChildController {
   getData() {
     return 'ok'
   }
+
+  @Get(/ane/) // GET /child-route/address
+  getAdd() {
+    return 'ok2'
+  }
 }
 
 @Server({

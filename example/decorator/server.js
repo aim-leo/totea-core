@@ -8,8 +8,6 @@ const { Server } = require('../../index')
   onClose() {
     console.log('service is closed')
   },
-  engine: 'html',
-  view: './view',
   errorMiddleware: [],
   controller: [],
   middleware: []

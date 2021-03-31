@@ -2,7 +2,7 @@ const { ToteaServer, Get, Controller } = require('../../index')
 
 const Mongone = require('mongone')
 const { string, integer, array, object } = require('mongone/type')
-const { Crud } = require('@totea/mongone')
+const { Crud } = require('../../../totea-mongone')
 
 const userModel = new Mongone('user', object({
   name: string().min(2).max(10),

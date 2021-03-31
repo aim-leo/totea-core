@@ -38,23 +38,24 @@ function Route(httpMethod, url) {
   return function (Target, key) {
     // get old data
     const routeFromDecorator =
-      Reflect.getMetadata('routeFromDecorator', Target) || {}
-
-    if (!routeFromDecorator[httpMethod]) routeFromDecorator[httpMethod] = {}
+      Reflect.getMetadata('routeFromDecorator', Target) || []
 
     // find out the callback bind
-    const bind = findCallbackBind(routeFromDecorator, Target[key])
+    const bindCallbackItem = routeFromDecorator.filter(item => item.callback === Target[key])[0]
 
-    if (bind) {
+    if (bindCallbackItem) {
       throw new Error(
-        `the callback:${key} has already bound to url: ${bind.url}, method: ${bind.method}`
+        `the callback:${key} has already bound to url: ${bindCallbackItem.url}, method: ${bindCallbackItem.method}`
       )
     }
 
     const methodUrl = '/' + humps.decamelize(key, { separator: '-' })
     url = url || methodUrl
 
-    if (routeFromDecorator[httpMethod][url]) {
+    // find out the url bind
+    const bindUrlItem = routeFromDecorator.filter(item => item.url === url && item.method === httpMethod)[0]
+
+    if (bindUrlItem) {
       const overrideFromDecorator =
         Reflect.getMetadata('overrideFromDecorator', Target) || {}
       if (!overrideFromDecorator[key]) {
@@ -64,7 +65,13 @@ function Route(httpMethod, url) {
       }
     }
 
-    routeFromDecorator[httpMethod][url] = Target[key]
+    routeFromDecorator.push({
+      callback: Target[key],
+      callbackName: key,
+      url,
+      method: httpMethod
+    })
+    // console.log(routeFromDecorator)
 
     Reflect.defineMetadata('routeFromDecorator', routeFromDecorator, Target)
   }
