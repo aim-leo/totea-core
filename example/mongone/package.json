@@ -1,5 +1,5 @@
 {
-  "name": "totea-example-view",
+  "name": "totea-example-mongone",
   "version": "1.0.0",
   "description": "",
   "scripts": {},
@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@totea/mongone": "^1.1.0",
+    "mongone": "^1.7.0",
     "pug": "^3.0.2"
   }
 }
