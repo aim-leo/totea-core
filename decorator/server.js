@@ -4,6 +4,7 @@ const createHttpError = require('http-errors')
 const { object, integer, string, array, func, removeEmpty } = require('tegund')
 
 const { routeMixin } = require('./mixin')
+const { kidnapRes } = require('../middleware/kidnap')
 
 const express = require('../helper/express')
 
@@ -71,12 +72,14 @@ const Server = (params = {}) => Target => {
       this.onServe = params.onServe
       this.onClose = params.onClose
 
+      this._controller = params.controller || []
+
       this.controller = {}
 
-      this.init(params.controller)
+      this.init()
     }
 
-    init(controller = []) {
+    init() {
       // configure app
       this.app = express()
       // set view
@@ -115,17 +118,10 @@ const Server = (params = {}) => Target => {
       this.app.use(express.json())
       this.app.use(express.urlencoded({ extended: false }))
 
+      // use kidnap middleware
+      this.middleware.unshift(kidnapRes)
       // use middleware
       if (this.middleware.length > 0) this.app.use(...this.middleware)
-
-      // init controller
-      if (controller.length > 0) {
-        controller.forEach(item => {
-          const c = this.useController(item)
-
-          this.controller[c.name] = c
-        })
-      }
 
       // assign app method to this
       this._mappingRouterMethod(this.app)
@@ -134,6 +130,15 @@ const Server = (params = {}) => Target => {
     start() {
       // assign decorator
       this._assignRouterFromDecorator()
+
+      // init controller
+      if (this._controller.length > 0) {
+        this._controller.forEach(item => {
+          const c = this.useController(item)
+
+          this.controller[c.name] = c
+        })
+      }
 
       if (this.errorMiddleware.length > 0) this.app.use(...this.errorMiddleware)
 

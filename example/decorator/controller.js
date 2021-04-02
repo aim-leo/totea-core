@@ -1,4 +1,5 @@
-const { Server, Controller, Get } = require('../../index')
+const { Middleware } = require('../../decorator')
+const { Server, Controller, Get, Logger } = require('../../index')
 
 @Controller('childRoute')
 class ChildController {
@@ -16,6 +17,7 @@ class ChildController {
 @Server({
   controller: [ChildController]
 })
+@Logger()
 class Service {
   @Get() // GET /root-simple
   rootSimple() {

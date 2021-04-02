@@ -1,4 +1,4 @@
-const { ToteaServer, Get, Controller } = require('../../index')
+const { ToteaServer, Get, Controller, Logger } = require('../../index')
 
 const Mongone = require('mongone')
 const { string, integer, array, object } = require('mongone/type')
@@ -12,6 +12,7 @@ const userModel = new Mongone('user', object({
 
 @Controller('user')
 @Crud(userModel)
+@Logger()
 class UserController {
   @Get('/other')  // GET /user/other
   getJson({ res }) {

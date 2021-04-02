@@ -1,25 +1,25 @@
 const express = require('express')
-const http = require('http')
-
 const app = express()
-app.set('port', 5000)
+const port = 3000
 
-const middlewareOne = (req, res, next) => {
-  console.log('call middleware 1')
-
-  next()
-}
-
-const middlewareTwo = (req, res, next) => {
-  console.log('call middleware 2')
+app.use((req, res, next) => {
+  console.log('call global middleware')
 
   next()
-}
-
-app.get('/res', middlewareOne, middlewareTwo, (req, res) => {
-  res.json({ status: 200 })
 })
 
-const server = http.createServer(app)
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-server.listen(5000)
+const router = new express.Router()
+
+router.get('/', (req, res) => {
+  res.send('Hello Router!')
+})
+
+app.use('/child', router)
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})

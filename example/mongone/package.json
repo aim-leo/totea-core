@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@totea/mongone": "^1.1.0",
-    "mongone": "^1.7.0",
-    "pug": "^3.0.2"
+    "mongone": "^1.7.0"
   }
 }

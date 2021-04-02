@@ -1,4 +1,4 @@
-const path = require('path')
+const { Logger } = require('../../logger')
 
 const { Server, Get, createHttpError } = require('../../index')
 
@@ -10,7 +10,7 @@ const { Server, Get, createHttpError } = require('../../index')
   onClose() {
     console.log('service is closed')
   },
-  static: ['public'],
+  static: ['pages'],
   view: {
     path: './jades',
     engine: require('pug'),
@@ -20,7 +20,7 @@ const { Server, Get, createHttpError } = require('../../index')
 class Service {
   @Get('/html')
   getHtml({ res }) {
-    res.sendFile('test.html', { root: 'public' })
+    res.sendFile('test.html', { root: 'pages' })
   }
 
   @Get('/jade')

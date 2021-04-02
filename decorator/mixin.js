@@ -4,7 +4,7 @@ const createHttpError = require('http-errors')
 const { isObject } = require('tegund')
 const routerOrder = require('sort-route-addresses')
 
-const { kidnap } = require('../helper')
+const { kidnapResSendKey } = require('../middleware/kidnap')
 
 function overrideRoute(source, target) {
   for (const item of source) {
@@ -47,7 +47,7 @@ const routeMixin = {
       routeFromDecorator
     )
 
-    const toRankAddress =  item => `${item.method.toUpperCase()} ${item.url}` 
+    const toRankAddress = item => `${item.method.toUpperCase()} ${item.url}`
 
     const sortedList = routerOrder(routeFromDecorator.map(toRankAddress))
 
@@ -56,7 +56,9 @@ const routeMixin = {
       Reflect.getMetadata('middlewareFromDecorator', this) || {}
 
     for (const key of sortedList) {
-      const { method, url, callback, callbackName } = routeFromDecorator.filter(item => toRankAddress(item) === key)[0]
+      const { method, url, callback, callbackName } = routeFromDecorator.filter(
+        item => toRankAddress(item) === key
+      )[0]
       if (typeof this[method] !== 'function') {
         continue
       }
@@ -67,11 +69,6 @@ const routeMixin = {
       console.log(`[totea route]: ${method}`, this.url ? this.url + url : url)
 
       this[method](url, ...middleware, async (req, res, next) => {
-        // kidnap res.sendFile, after called this method, don't response the request
-        kidnap(res, 'sendFile', () => {
-          res.__fileSent__ = true
-        })
-
         try {
           const result = await callback.call(this, {
             req,
@@ -85,7 +82,7 @@ const routeMixin = {
 
           if (result instanceof Error) next(result)
 
-          if (res.headersSent || res.__fileSent__) return
+          if (res.headersSent || res[kidnapResSendKey]) return
 
           if (!result) {
             return next(createHttpError(500))

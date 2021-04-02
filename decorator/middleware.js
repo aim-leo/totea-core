@@ -1,9 +1,9 @@
 require('reflect-metadata')
 
-function Middleware(callback) {
-  if (typeof callback !== 'function') {
-    throw new Error('Middleware expected a function')
-  }
+const { array } = require('tegund')
+
+function Middleware(...callbacks) {
+  array('function').assert(callbacks)
 
   return function (target, key) {
     // get old data
@@ -15,13 +15,13 @@ function Middleware(callback) {
     // if the key is undefine, assign it to root
     if (!key) {
       middlewareFromDecorator = middlewareFromDecorator || []
-      middlewareFromDecorator.unshift(callback)
+      middlewareFromDecorator.unshift(...[].concat(callbacks).reverse())
     } else {
       middlewareFromDecorator = middlewareFromDecorator || {}
 
       if (!middlewareFromDecorator[key]) middlewareFromDecorator[key] = []
 
-      middlewareFromDecorator[key].unshift(callback)
+      middlewareFromDecorator[key].unshift(...[].concat(callbacks).reverse())
     }
 
     Reflect.defineMetadata(
