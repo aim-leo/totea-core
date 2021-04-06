@@ -23,6 +23,7 @@ function overrideRoute(source, target) {
 
 const routeMixin = {
   _assignRouterFromDecorator() {
+    const slience = this._isToteaController ? this.server.silence : this.silence
     // find out the global middleware
     const globalMiddlewareFromDecorator =
       Reflect.getMetadata('middlewareFromDecorator', this.constructor) || []
@@ -66,7 +67,7 @@ const routeMixin = {
       // get middleware
       const middleware = middlewareFromDecorator[callbackName] || []
 
-      console.log(`[totea route]: ${method}`, this.url ? this.url + url : url)
+      if (!slience) console.log(`[totea route]: ${method}`, this.url ? this.url + url : url)
 
       this[method](url, ...middleware, async (req, res, next) => {
         try {
@@ -76,7 +77,7 @@ const routeMixin = {
             next,
             query: req.query,
             body: req.body,
-            header: req.header,
+            headers: req.headers,
             params: req.params
           })
 
@@ -92,9 +93,8 @@ const routeMixin = {
             return res.json({ code: 200, ...result })
           }
 
-          res.json({ code: 200, result, message: 'success' })
+          res.json({ code: 200, result, message: 'OK' })
         } catch (e) {
-          console.error(e)
           next(e)
         }
       })

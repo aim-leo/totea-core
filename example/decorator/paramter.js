@@ -32,7 +32,7 @@ class Service {
   <<<<< {"code":400,"message":"field name validate error, expected a String type, got a [object Undefined]"}
 
   >>>>> curl "localhost:3000/user?name=leo" -X GET
-  <<<<< {"code":200,"result":{"name":"leo","address":"XXX XXX","age":20},"message":"success"}
+  <<<<< {"code":200,"result":{"name":"leo","address":"XXX XXX","age":20},"message":"OK"}
 
   >>>>> curl "localhost:3000/user?name=bob" -X GET
   <<<<<< {"code":404,"message":"can not find this user"}

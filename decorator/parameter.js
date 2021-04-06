@@ -3,7 +3,7 @@ require('reflect-metadata')
 const { ObjectT, isObject } = require('tegund')
 const createHttpError = require('http-errors')
 
-const PARAMETERS = ['Body', 'Query', 'Params', 'Header']
+const PARAMETERS = ['Body', 'Query', 'Params', 'Headers']
 
 function Parameter(paramType, validator, errorMessage) {
   if (typeof paramType !== 'string') {

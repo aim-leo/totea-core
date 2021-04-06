@@ -2,4 +2,6 @@ const { ToteaServer } = require('../../index')
 
 const service = new ToteaServer()
 
-service.start()
+// service.start()
+
+module.exports = service

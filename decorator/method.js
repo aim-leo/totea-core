@@ -71,7 +71,6 @@ function Route(httpMethod, url) {
       url,
       method: httpMethod
     })
-    // console.log(routeFromDecorator)
 
     Reflect.defineMetadata('routeFromDecorator', routeFromDecorator, Target)
   }
