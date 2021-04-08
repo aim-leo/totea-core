@@ -88,17 +88,17 @@ const routeMixin = {
       // add to route
       this[method](url, ...middleware, async (req, res, next) => {
         function response(json) {
-          if (json.code === undefined) {
-            json.code = 200
+          if (json.status === undefined) {
+            json.status = 200
           }
 
           if (json.message === undefined) {
-            json.message = httpMessage[json.code]
+            json.message = httpMessage[json.status]
           }
 
           server.onResponse({
             res,
-            status: json.code,
+            status: json.status,
             message: json.message,
             result: json.result
           })
@@ -129,7 +129,7 @@ const routeMixin = {
           if (
             isObject(result) &&
             ((result.message && isString(result.message)) ||
-              isInteger(result.code))
+              isInteger(result.status))
           ) {
             return response(result)
           }

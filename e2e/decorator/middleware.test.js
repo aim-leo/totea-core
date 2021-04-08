@@ -34,7 +34,7 @@ it(`override global middleware when instantiate`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   expect(middlewareA).toHaveBeenCalledTimes(0)
   expect(middlewareB).toHaveBeenCalledTimes(1)
@@ -84,7 +84,7 @@ it(`set middleware for specific router`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   expect(globalMiddleware).toHaveBeenCalledTimes(1)
   expect(specificMiddleware).toHaveBeenCalledTimes(1)
@@ -93,7 +93,7 @@ it(`set middleware for specific router`, async () => {
   await request(service.app)
     .post('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 2, message: 'OK' })
+    .expect(200, { status: 200, result: 2, message: 'OK' })
 
   expect(globalMiddleware).toHaveBeenCalledTimes(2)
   expect(specificMiddleware).toHaveBeenCalledTimes(1)
@@ -140,7 +140,7 @@ it(`use Middleware decorator to set global middleware`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   expect(middlewareA).toHaveBeenCalledTimes(0)
   expect(middlewareB).toHaveBeenCalledTimes(1)
@@ -212,7 +212,7 @@ it(`middleware called order`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   expect(list.join('')).toBe('GHCDEF')
 
@@ -221,7 +221,7 @@ it(`middleware called order`, async () => {
   await request(service.app)
     .get('/root2')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'Bad Request' })
+    .expect(200, { status: 400, message: 'Bad Request' })
 
   expect(list.join('')).toBe('GHCD')
 
@@ -230,7 +230,7 @@ it(`middleware called order`, async () => {
   await request(service.app)
     .get('/root2?name=tony')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   expect(list.join('')).toBe('GHCDIJ')
 
@@ -240,7 +240,7 @@ it(`middleware called order`, async () => {
   await request(service.app)
     .get('/child-route/address')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 'ok', message: 'OK' })
+    .expect(200, { status: 200, result: 'ok', message: 'OK' })
 
   expect(list.join('')).toBe('GHCD(A)(B)(C)(D)')
 

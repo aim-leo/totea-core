@@ -23,30 +23,30 @@ it(`test all paramter`, async () => {
   await request(service.app)
     .post('/')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 404, message: 'Not Found' })
+    .expect(200, { status: 404, message: 'Not Found' })
 
   await request(service.app)
     .post('/1')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'Bad Request' })
+    .expect(200, { status: 400, message: 'Bad Request' })
 
   await request(service.app)
     .post('/1?name=tony')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'Bad Request' })
+    .expect(200, { status: 400, message: 'Bad Request' })
 
   await request(service.app)
     .post('/1?name=tony')
     .send({ address: 'address' })
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'Bad Request' })
+    .expect(200, { status: 400, message: 'Bad Request' })
 
   await request(service.app)
     .post('/1?name=tony')
     .send({ address: 'address' })
     .set('token', 'token')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   await service.stop()
 
@@ -74,44 +74,44 @@ it(`use tegund as a paramter validator`, async () => {
   await request(service.app)
     .post('/user')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'field name validate error, expected a String type, got a [object Undefined]' })
+    .expect(200, { status: 400, message: 'field name validate error, expected a String type, got a [object Undefined]' })
 
   await request(service.app)
     .post('/user')
     .send({ name: 123 })
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'field name validate error, expected a String type, got a [object Number]' })
+    .expect(200, { status: 400, message: 'field name validate error, expected a String type, got a [object Number]' })
 
   await request(service.app)
     .post('/user')
     .send({ name: '1' })
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'field name validate error, expected a String, length gte than 3, but got a length: 1' })
+    .expect(200, { status: 400, message: 'field name validate error, expected a String, length gte than 3, but got a length: 1' })
 
   await request(service.app)
     .post('/user')
     .send({ name: '12345678901234567890' })
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'field name validate error, expected a String, length lte than 10, but got a length: 20' })
+    .expect(200, { status: 400, message: 'field name validate error, expected a String, length lte than 10, but got a length: 20' })
 
   await request(service.app)
     .post('/user')
     .send({ name: 'tony' })
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'field age validate error, expected a Integer type, got a [object Undefined]' })
+    .expect(200, { status: 400, message: 'field age validate error, expected a Integer type, got a [object Undefined]' })
 
   await request(service.app)
     .post('/user')
     .send({ name: 'tony', age: -1 })
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'field age validate error, expected a Integer, value gte than 1, but got a: -1' })
+    .expect(200, { status: 400, message: 'field age validate error, expected a Integer, value gte than 1, but got a: -1' })
 
   const user = { name: 'leo', age: 18 }
   await request(service.app)
     .post('/user')
     .send(user)
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: user, message: 'add user success' })
+    .expect(200, { status: 200, result: user, message: 'add user success' })
 
   await service.stop()
 

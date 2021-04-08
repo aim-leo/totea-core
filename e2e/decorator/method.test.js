@@ -38,27 +38,27 @@ it(`test all method`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   await request(service.app)
     .post('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   await request(service.app)
     .delete('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   await request(service.app)
     .patch('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   await request(service.app)
     .put('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   await service.stop()
 

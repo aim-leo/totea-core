@@ -30,7 +30,7 @@ it(`set port onServe onClose at Server decorator`, async () => {
   await request(service.app)
     .get('/')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 404, message: 'Not Found' })
+    .expect(200, { status: 404, message: 'Not Found' })
 
   expect(onClose).toHaveBeenCalledTimes(0)
   await service.stop()
@@ -70,7 +70,7 @@ it(`set global middleware at Server`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   expect(middleware).toHaveBeenCalledTimes(1)
 
@@ -107,14 +107,14 @@ it(`set global error middleware at Server`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   expect(errorMiddleware).toHaveBeenCalledTimes(0)
 
   await request(service.app)
     .get('/root?name=tony')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 400, message: 'Bad Request' })
+    .expect(200, { status: 400, message: 'Bad Request' })
 
   expect(errorMiddleware).toBeCalledWith(
     error,
@@ -150,7 +150,7 @@ it(`set static path at Server`, async () => {
   await request(service.app)
     .get('/root')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 1, message: 'OK' })
+    .expect(200, { status: 200, result: 1, message: 'OK' })
 
   await request(service.app)
     .get('/test.json')

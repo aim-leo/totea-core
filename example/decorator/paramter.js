@@ -29,13 +29,13 @@ class Service {
   EXAMPLES:
 
   >>>>> curl "localhost:3000/user" -X GET
-  <<<<< {"code":400,"message":"field name validate error, expected a String type, got a [object Undefined]"}
+  <<<<< {"status":400,"message":"field name validate error, expected a String type, got a [object Undefined]"}
 
   >>>>> curl "localhost:3000/user?name=leo" -X GET
-  <<<<< {"code":200,"result":{"name":"leo","address":"XXX XXX","age":20},"message":"OK"}
+  <<<<< {"status":200,"result":{"name":"leo","address":"XXX XXX","age":20},"message":"OK"}
 
   >>>>> curl "localhost:3000/user?name=bob" -X GET
-  <<<<<< {"code":404,"message":"can not find this user"}
+  <<<<<< {"status":404,"message":"can not find this user"}
   
   */
   @Get('/user') // GET /user
@@ -58,10 +58,10 @@ class Service {
   EXAMPLES:
   
   >>>>> curl "localhost:3000/user/" -X PUT
-  <<<<< {"code":404,"message":"Not Found"}
+  <<<<< {"status":404,"message":"Not Found"}
 
   >>>>> curl "localhost:3000/user/leo" -X PUT -H "Content-type: application/json" -d '{"address": "XXXXXX","age": 23}'
-  <<<<< {"code":200,"result":{"address":"XXXXXX","age":23,"name":"leo"},"message":"update user success"}
+  <<<<< {"status":200,"result":{"address":"XXXXXX","age":23,"name":"leo"},"message":"update user success"}
   
   */
 

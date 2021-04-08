@@ -35,7 +35,7 @@ const serverParamsInterface = object({
     string(),
     object({ path: string(), maxAge: integer().optional() })
   ).optional(),
-  silence: boolean().optional(),
+  silence: boolean().optional()
 })
 
 const Server = (params = {}) => Target => {
@@ -223,11 +223,17 @@ const Server = (params = {}) => Target => {
 
     onResponse({ res, status, result, message }) {
       res.json(
-        removeEmpty({
-          code: status,
-          message: message,
-          result
-        })
+        removeEmpty(
+          {
+            status: status,
+            message: message,
+            result
+          },
+          {
+            removeNull: false,
+            removeUndefined: true  // if some arg is undefined, will remove it
+          }
+        )
       )
     }
 
@@ -259,7 +265,7 @@ const Server = (params = {}) => Target => {
           ? 'Pipe ' + this.port
           : 'Port ' + this.port
 
-      switch (error.code) {
+      switch (error.status) {
         case 'EACCES':
           console.error(bind + ' requires elevated privileges')
           process.exit(1)

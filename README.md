@@ -11,7 +11,7 @@
 [TOC]
 
 ## 简单示例
-### 最小的
+### 最小的示例
 ``` javascript
 const { Server } = require('@totea/core')
 
@@ -103,13 +103,13 @@ const service = new Service()
 service.start()
 
 // >>>>> curl "localhost:3000/root" -X GET
-// <<<<< {"code":400,"message":"Bad Request"}
+// <<<<< {"status":400,"message":"Bad Request"}
 
 // >>>>> curl "localhost:3000/root?id=1" -X GET
-// <<<<< {"code":400,"message":"Bad Request"}
+// <<<<< {"status":400,"message":"Bad Request"}
 
 // >>>>> curl "localhost:3000/root?id=1234567890" -X GET
-// <<<<< {"code":200,"message":"OK", "result": 1}
+// <<<<< {"status":200,"message":"OK", "result": 1}
 ```
 
 ### 子路由
@@ -136,7 +136,7 @@ const service = new Service()
 service.start()
 
 // >>>>> curl "localhost:3000/child-route/address" -X GET
-// <<<<< {"code":200,"message":"OK", "result": 'ok'}
+// <<<<< {"status":200,"message":"OK", "result": 'ok'}
 ```
 
 ## 安装使用
@@ -159,7 +159,7 @@ module.exports = {
 npx babel-node index.js
 ```
 
-## 使用文档
+## API
 
 ### Server
 ```javascript
@@ -174,6 +174,7 @@ const { Server } = require('@totea/core')
 - **controller** : 二级路由列表，`array<Controller|controller>`，可以提供Controller或者已经实例化后的controller数组；
 - **onServe** : 服务开始运行的钩子函数，`function`；
 - **onClose** : 服务结束运行的钩子函数，`function`；
+- **onResponse**:  请求响应前的回调函数，可以用于定制响应格式，`function`；
 - **slience** :  是否禁止打印log，，`boolean`，默认false；
 -  **static** :  定义静态文件目录，`string|{path: string, maxAge: integer}`，可以接受string类型，表示目录，或者一个obejct， 参数会自动传给express.static()
 -  **view**:  定义视图渲染模板,
@@ -274,9 +275,6 @@ service.start()
 - **delete()**: 等同于express中的app.delete；
 - **put()** : 等同于express中的app.put；
 
-#### 静态属性
--**slience** :  是否禁止log输出，默认false；
-
 ### Controller
 ```javascript
 const { Controller } = require('@totea/core')
@@ -337,7 +335,7 @@ const service = new Service()
 service.start()
 
 // >>>>> curl "localhost:3000/root"
-// <<<<< {"code":200,"result":"get/root/childOne","message":"OK"}
+// <<<<< {"status":200,"result":"get/root/childOne","message":"OK"}
 
 ```
 
@@ -558,40 +556,40 @@ const service = new Service()
 service.start()
 
 // >>>>> curl "localhost:3000/user" -X GET
-// <<<<< {"code":200,"result":[],"message":"OK"}
+// <<<<< {"status":200,"result":[],"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X GET
-// <<<<< {"code":400,"message":"this user is unexsist, please recheck"}
+// <<<<< {"status":400,"message":"this user is unexsist, please recheck"}
 
 // >>>>> curl "localhost:3000/user" -X POST
-// <<<<< {"code":400,"message":"please input a user name"}
+// <<<<< {"status":400,"message":"please input a user name"}
 
 // >>>>> curl "localhost:3000/user" -X POST -H "Content-type: application/json" -d '{"name": "leo"}'
-// <<<<< {"code":200,"result":{"id":1,"name":"leo"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":1,"name":"leo"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user" -X POST -H "Content-type: application/json" -d '{"name": "leo"}'
-// <<<<< {"code":400,"message":"this user is created, please recheck"}
+// <<<<< {"status":400,"message":"this user is created, please recheck"}
 
 // >>>>> curl "localhost:3000/user" -X POST -H "Content-type: application/json" -d '{"name": "tony"}'
-// <<<<< {"code":200,"result":{"id":2,"name":"tony"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":2,"name":"tony"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user" -X GET
-// <<<<< {"code":200,"result":[{"id":1,"name":"leo"},{"id":2,"name":"tony"}],"message":"OK"}
+// <<<<< {"status":200,"result":[{"id":1,"name":"leo"},{"id":2,"name":"tony"}],"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X GET
-// <<<<< {"code":200,"result":{"id":1,"name":"leo"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":1,"name":"leo"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X DELETE
-// <<<<< {"code":200,"result":{"id":1,"name":"leo"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":1,"name":"leo"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X GET
-// <<<<< {"code":400,"message":"this user is unexsist, please recheck"}
+// <<<<< {"status":400,"message":"this user is unexsist, please recheck"}
 
 // >>>>> curl "localhost:3000/user/2" -X PUT -H "Content-type: application/json" -d '{"name": "tom"}'
-// <<<<< {"code":200,"result":{"id":2,"name":"tom"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":2,"name":"tom"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user" -X GET
-// <<<<< {"code":200,"result":[{"id":2,"name":"tom"}],"message":"OK"}
+// <<<<< {"status":200,"result":[{"id":2,"name":"tom"}],"message":"OK"}
 ```
 
 #### 绑定后的方法
@@ -610,7 +608,7 @@ class Service {
   @Post('/all_arg')
   getData({ res, req, next, headers, query, body, params  }) {
 	// response with res.json
-	res.json({ code: 2000, message: 'OK' })
+	res.json({ status: 2000, message: 'OK' })
   }
 }
 ```
@@ -629,18 +627,18 @@ const { Server, Get, Query, Body } = require('@totea/core')
 @Server()
 class Service {
   @Get()
-  @Query(query => query.id && query.id.length === 10)  // 当req.query.id存在且长度为10时，返回true，表示校验通过, 不通过将收到{code: 400, message: "Bad Request"}
+  @Query(query => query.id && query.id.length === 10)  // 当req.query.id存在且长度为10时，返回true，表示校验通过, 不通过将收到{status: 400, message: "Bad Request"}
   @Body(body => {
-	// 返回字符串格式，表示错误信息,将收到{code: 400, message: "please provide a name"}
+	// 返回字符串格式，表示错误信息,将收到{status: 400, message: "please provide a name"}
 	if (!body.name) return 'please provide a name'
 	// 没有返回或者返回true，表示检验通过
   })
   @Params(params => {
-    // 返回Error，表示http error 将收到{code: 400, message: error.message"}
+    // 返回Error，表示http error 将收到{status: 400, message: error.message"}
 	if (!params.address) return new Error()
   })
   @Headers(headers => {
-	// 返回数字格式，表示http error code, 将收到{code: 401, message: "Unauthorized"}
+	// 返回数字格式，表示http error status, 将收到{status: 401, message: "Unauthorized"}
 	if (!headers.token) return 401
   })
   getData() {
@@ -770,7 +768,7 @@ class ToteaServer{
 ```
 
 #### 使用Express中间件
-我们说过， totea使用express作为web服务器，我们没有修改任何底层的逻辑，这意味着可以直接使用所有针对Express开发的中间件
+我们说过，totea使用express作为web服务器，我们没有修改任何底层的逻辑，这意味着可以直接使用所有针对Express开发的中间件
 
 示例，使用morgan来打印请求日志：
 ``` javascript
@@ -781,6 +779,7 @@ const morgan = require('morgan')
 @Middleware(morgan('combined'))
 class ToteaServer{}
 ```
+#### 自带的日志中间件
 当然，totea 也自带了一个简单的日志打印中间件，使用方法：
 ``` javascript
 const { Server, Logger, Get } = require('@totea/core')
@@ -788,7 +787,7 @@ const morgan = require('morgan')
 
 @Server()
 @Logger()
-class ToteaServer{
+class Service{
 	@Get('/user')
 	getUser() {
 		return {
@@ -799,11 +798,243 @@ class ToteaServer{
 }
 
 // logs
-[totea logger]: 2021-04-07T09:43:18.836Z /user GET {"code":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 11ms
+[totea logger]: 2021-04-07T09:43:18.836Z /user GET {"status":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 11ms
 
-[totea logger]: 2021-04-07T09:45:07.921Z /user GET {"code":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 3ms
+[totea logger]: 2021-04-07T09:45:07.921Z /user GET {"status":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 3ms
 
-[totea logger]: 2021-04-07T09:45:08.684Z /user GET {"code":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 1ms
+[totea logger]: 2021-04-07T09:45:08.684Z /user GET {"status":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 1ms
 
-[totea logger]: 2021-04-07T09:45:09.346Z /user GET {"code":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 1ms
+[totea logger]: 2021-04-07T09:45:09.346Z /user GET {"status":200,"result":{"docs":[],"count":0,"page":1,"limit":10},"message":"user query success!"} 1ms
 ```
+
+## 成功响应
+在express中，一般使用req.send 或者 res.json来响应请求，该方法在totea中也同样适用：
+``` javascript
+@Server()
+class Service{
+	@Get('/user')
+	getUser({ res }) {
+		res.status(200).json({ status: 200, message: "OK" })
+	}
+
+	@Get('/page')
+	getPage({ res }) {
+		res.send('<p>some html</p>')
+	}
+	
+	@Get('/html')
+	getPage({ res }) {
+		res.sendFile('test.html', { root: 'pages' })
+	}
+}
+```
+在totea中，我们有更加便捷的方式来返回json，只需要把内容放在函数的返回值中：
+除json以外的请求，仍然需要使用res的方法来响应。
+> 注意，当函数没有返回值，或者返回undefined（在实际的代码中无法分辨），totea会视作请求为被正确响应，返回{ status: 500, message: "Internal Server Error" }
+
+``` javascript
+@Server()
+class Service{
+	@Get('/user')
+	getUser() {  // 返回的内容将以{ status: 200, message: "OK", result: ${return} }形式包裹
+		return { name: 'leo', address: 'XXX' }
+	}
+
+	@Get('/json')
+	getPage() {
+		// 假设返回的是一个obejct，且具有一个整数类型的status，或者有一个字符串格式非空的message，则返回该json
+		return {
+			status: 200,
+			result: { name: 'leo', address: 'XXX' },
+			message: 'OK'
+		}
+	}
+}
+
+// 以上两个请求都将返回一样的内容：
+{
+	status: 200,
+	result: { name: 'leo', address: 'XXX' },
+	message: 'OK'
+}
+```
+> totea劫持了res的sendFile和send方法，以便在请求响应前，获取到预计要返回的内容。同时，我们也规避了重复响应请求的问题。
+
+下面这个例子，当请求被res.json响应后，代码虽然会接着往下运行，但是不会再重复响应，当然，及时return是一个很好的编码习惯
+``` javascript
+@Server()
+class Service{
+	@Get('/user')
+	getUser({ res, query }) {
+		if (!query.id) {
+			res.json({ status: 404, message: 'please provide a user id' })
+		}
+		return { name: 'leo', address: 'XXX' }
+	}
+}
+```
+
+## 失败响应
+相比成功的响应，在实际编码中，接口返回错误的情形要更为普遍，totea提供了多种方式来处理：
+>totea中使用[http-errors](https://www.npmjs.com/package/http-errors)来创建httpError，你可以直接引入该库，或者直接使用createHttpError方法
+``` javascript
+const { Server, Get, createHttpError } = require('@totea/core')
+@Server()
+class Service {
+  // response by res, got: {"status":401,"message":"Unauthorized"}
+  @Get('/error_res')
+  errorRes({ res }) {
+    res.json({ status: 401, message: 'Unauthorized' })
+  }
+
+  // return a Promise.reject， with a http status, got: {"status":404,"message":"Not Found"}
+  @Get('/error_status')
+  errorstatus() {
+    return Promise.reject(404)
+  }
+
+  // return a Promise.reject, with a error message, got: {"status":400,"message":"this is the invalid message"}
+  @Get('/error_message')
+  errorMessage() {
+    return Promise.reject('this is the invalid message')
+  }
+
+  // return a Promise.reject, with http status and message, got: {"status":410,"message":"this is the invalid message"}
+  @Get('/error_status_message')
+  errorstatusAndMessage() {
+    return Promise.reject({
+      status: 410,
+      message: 'this is the invalid message'
+    })
+  }
+
+  // return a http error, got: {"status":401,"message":"Unauthorized"}
+  @Get('/http_error')
+  httpError() {
+    return createHttpError(401)
+  }
+
+  // throw a http error, got: {"status":401,"message":"Unauthorized"}
+  @Get('/http_error')
+  throwHttpError() {
+    throw createHttpError(401)
+  }
+
+  // return a normal error, got {"status":406,"message":"this is a error message"}
+  @Get('/return_simple_error')
+  returnSimpleError() {
+    const e = new Error('this is a error message')
+
+    e.status = 406
+
+    return e
+  }
+
+  // throw a normal error, got {"status":406,"message":"this is a error message"}
+  @Get('/throw_simple_error')
+  throwSimpleError() {
+    const e = new Error('this is a error message')
+
+    e.status = 406
+
+    throw e
+  }
+}
+```
+
+> Express并没有提供全局错误处理的方法，对于截获async/await抛出的异常尤为困难，totea默认使用[express-async-errors](https://www.npmjs.com/package/express-async-errors)，当截获未知错误时，始终返回一个{ status: 500, message: "Internal Server Error" }
+
+## 路由优先级
+express 本身未提供路由优先级排序，路由的顺序决定于你的代码顺序。当使用express原生的方法来定义路由时，你的app可能存在不可触达的死区：
+
+```javascript
+const express = require('express')
+
+const app = express()
+
+app.get('/:id', (req, res) => {  // 所有的请求都在这里被响应了
+  res.json({ id: req.params.id })
+})
+
+app.get('/user', (req, res) => {  // 死区
+  res.json({ user: 'leo' })
+})
+
+app.listen(3000)
+```
+这与我们预期的情况不符，我们希望具体路由先匹配，其次才是匹配式路由
+在totea中完全不需要担心这种情况，我们默认使用[sort-route-addresses](https://www.npmjs.com/package/sort-route-addresses)对路由的优先级进行了排序：
+```javascript
+const { Server, Get } = require('@totea/core')
+
+@Server()
+class Service {
+  @Get('/:id')
+  getUserById({ res, params }) {
+    res.json({ id: params.id })
+  }
+
+  @Get('/user')
+  getUser({ res }) {
+    res.json({ user: 'leo' })
+  }
+}
+
+const service = new Service()
+
+service.start()
+```
+这个例子和上面完全一样，但是满足要求
+
+## HTTP状态码
+totea的设计初衷心就是用于创建API服务器，用它来写接口将非常高效。
+在实际的开发过程中，我们的接口可能会被要求始终以200的状态码来返回数据，而实际的状态信息在返回的json中去体现。
+例如，客户端开发工程师可能会要求你这样设计接口：
+```javascript
+// 当请求成功时
+Status status: 200 OK
+response: { status: 200, message: "OK", result: [{ name: 'leo' }] }
+// 当请求出错时，比如权限不足
+Status status: 200 OK
+response: { status: 401, message: "Unauthorized" }
+```
+这不得不说也是一种规范，但和主流的设计思想相悖，例如RESTful：
+```javascript
+// 当请求成功时
+Status status: 200 OK
+response: { result: [{ name: 'leo' }] }
+// 当请求出错时，比如权限不足
+Status status: 401 Unauthorized
+response: null
+```
+关于这个问题在V2EX上有过激烈的讨论，原文地址： [API 使用 HTTP 状态码还是全部返回 200](https://www.v2ex.com/t/191534), 每个开发者都有不同的理解
+
+totea默认使用第一种规范，但是允许开发者自定义响应，Server装饰器接受一个onResponse方法，该方法会在每次请求被返回前被调用，你可以提供一个自定义的方法去覆盖它。
+默认的onResponse方法是：
+```javascript
+function onResponse({ res, status, result, message }) {
+   res.json(
+     removeEmpty({  // if some arg is undefined, will remove it
+       status: status,
+       message: message,
+       result
+     }, {
+		removeNull: false,
+		removeUndefined: true
+	})
+   )
+ }
+```
+假设你想使用RESTful的规范：
+```javascript
+@Server({
+	onResponse: ({ res, status, result, message }) => {
+		res.status(status)
+		res.json({ result, message })
+	}
+})
+class Service {}
+```
+
+## HTML模板及静态目录
+详细的例子请查看[地址](https://github.com/aim-leo/totea-core/tree/master/example/view)

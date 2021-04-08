@@ -96,37 +96,37 @@ const service = new Service()
 service.start()
 
 // >>>>> curl "localhost:3000/user" -X GET
-// <<<<< {"code":200,"result":[],"message":"OK"}
+// <<<<< {"status":200,"result":[],"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X GET
-// <<<<< {"code":400,"message":"this user is unexsist, please recheck"}
+// <<<<< {"status":400,"message":"this user is unexsist, please recheck"}
 
 // >>>>> curl "localhost:3000/user" -X POST
-// <<<<< {"code":400,"message":"please input a user name"}
+// <<<<< {"status":400,"message":"please input a user name"}
 
 // >>>>> curl "localhost:3000/user" -X POST -H "Content-type: application/json" -d '{"name": "leo"}'
-// <<<<< {"code":200,"result":{"id":1,"name":"leo"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":1,"name":"leo"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user" -X POST -H "Content-type: application/json" -d '{"name": "leo"}'
-// <<<<< {"code":400,"message":"this user is created, please recheck"}
+// <<<<< {"status":400,"message":"this user is created, please recheck"}
 
 // >>>>> curl "localhost:3000/user" -X POST -H "Content-type: application/json" -d '{"name": "tony"}'
-// <<<<< {"code":200,"result":{"id":2,"name":"tony"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":2,"name":"tony"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user" -X GET
-// <<<<< {"code":200,"result":[{"id":1,"name":"leo"},{"id":2,"name":"tony"}],"message":"OK"}
+// <<<<< {"status":200,"result":[{"id":1,"name":"leo"},{"id":2,"name":"tony"}],"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X GET
-// <<<<< {"code":200,"result":{"id":1,"name":"leo"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":1,"name":"leo"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X DELETE
-// <<<<< {"code":200,"result":{"id":1,"name":"leo"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":1,"name":"leo"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user/1" -X GET
-// <<<<< {"code":400,"message":"this user is unexsist, please recheck"}
+// <<<<< {"status":400,"message":"this user is unexsist, please recheck"}
 
 // >>>>> curl "localhost:3000/user/2" -X PUT -H "Content-type: application/json" -d '{"name": "tom"}'
-// <<<<< {"code":200,"result":{"id":2,"name":"tom"},"message":"OK"}
+// <<<<< {"status":200,"result":{"id":2,"name":"tom"},"message":"OK"}
 
 // >>>>> curl "localhost:3000/user" -X GET
-// <<<<< {"code":200,"result":[{"id":2,"name":"tom"}],"message":"OK"}
+// <<<<< {"status":200,"result":[{"id":2,"name":"tom"}],"message":"OK"}

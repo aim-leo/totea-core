@@ -3,7 +3,7 @@ const { ToteaServer, express } = require('../../index')
 const router = new express.Router()
 
 router.get('/route', (req, res) => {
-  res.json({ code: 200 })
+  res.json({ status: 200 })
 })
 
 class Service extends ToteaServer {
@@ -12,22 +12,22 @@ class Service extends ToteaServer {
 
     // GET /root
     this.get('/root', (req, res) => {
-      res.json({ code: 200 })
+      res.json({ status: 200 })
     })
 
     // POST /root
     this.post('/root', (req, res) => {
-      res.json({ code: 200 })
+      res.json({ status: 200 })
     })
 
     // DELETE /root
     this.delete('/root', (req, res) => {
-      res.json({ code: 200 })
+      res.json({ status: 200 })
     })
 
     // PUT /root
     this.put('/root', (req, res) => {
-      res.json({ code: 200 })
+      res.json({ status: 200 })
     })
 
     // child route

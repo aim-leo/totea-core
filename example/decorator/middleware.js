@@ -82,7 +82,7 @@ class Service {
     next()
   })
   findUserByName() {
-    return { result: {}, code: 200 }
+    return { result: {}, status: 200 }
   }
 }
 

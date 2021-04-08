@@ -28,22 +28,22 @@ it(`add a simple controller`, async () => {
   await request(service.app)
     .get('/')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 404, message: 'Not Found' })
+    .expect(200, { status: 404, message: 'Not Found' })
 
   await request(service.app)
     .get('/child-route')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 404, message: 'Not Found' })
+    .expect(200, { status: 404, message: 'Not Found' })
 
   await request(service.app)
     .get('/child-route/address')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 'ok', message: 'OK' })
+    .expect(200, { status: 200, result: 'ok', message: 'OK' })
 
   await request(service.app)
     .get('/child-route/lane')
     .expect('Content-Type', /json/)
-    .expect(200, { code: 200, result: 'ok2', message: 'OK' })
+    .expect(200, { status: 200, result: 'ok2', message: 'OK' })
 
   await service.stop()
 
