@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/aim-leo/totea-core/compare/v1.2.0...v1.3.0) (2021-04-08)
+
+
+### Features
+
+* add logger decorator ([26d15d2](https://github.com/aim-leo/totea-core/commit/26d15d2b2c9a77e095b916f35758860fe7ba203b))
+* add onResponse ([e82dc11](https://github.com/aim-leo/totea-core/commit/e82dc1185876b47577f598db141f8b95ecef5931))
+
 ## [1.2.0](https://github.com/aim-leo/totea-core/compare/v1.1.0...v1.2.0) (2021-03-30)
 
 
