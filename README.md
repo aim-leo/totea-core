@@ -1,18 +1,81 @@
 # totea
 
-
 **totea**是一个基于express的nodejs框架，使用装饰器来定义路由和中间件。特点概述:
- 
-- **javascript** : 现有的使用装饰器的框架都默认使用typescript，totea可以在javascript中使用，只需要引入[plugin-proposal-decorators](https://babeljs.io/docs/en/babel-plugin-proposal-decorators)；
-- **简单高效** : totea提供了不到20个装饰器函数，却可以支持多种复杂使用场景；
-- **易于整合** : totea使用express作为web服务器，我们没有修改任何底层的逻辑，这意味着在express中能使用的方法和插件，也可以在totea中使用。
 
--------------------
-[TOC]
+*   **javascript** : 现有的使用装饰器的框架都默认使用typescript，totea可以在javascript中使用，只需要引入[plugin-proposal-decorators](https://babeljs.io/docs/en/babel-plugin-proposal-decorators)；
+*   **简单高效** : totea提供了不到20个装饰器函数，却可以支持多种复杂使用场景；
+*   **易于整合** : totea使用express作为web服务器，我们没有修改任何底层的逻辑，这意味着在express中能使用的方法和插件，也可以在totea中使用。
+
+***
+
+## Table of Contents
+
+*   [简单示例](#简单示例)
+
+    *   [最小的示例](#最小的示例)
+    *   [定义路由](#定义路由)
+    *   [使用中间件](#使用中间件)
+    *   [参数校验](#参数校验)
+    *   [子路由](#子路由)
+
+*   [安装使用](#安装使用)
+
+*   [API](#api)
+
+    *   [Server](#server)
+
+        *   [参数](#参数)
+        *   [example](#example)
+
+    *   [ToteaServer](#toteaserver)
+
+        *   [实例属性](#实例属性)
+        *   [实例方法](#实例方法)
+
+    *   [Controller](#controller)
+
+        *   [参数](#参数-1)
+        *   [example](#example-1)
+
+    *   [ToteaController](#toteacontroller)
+
+        *   [实例属性](#实例属性-1)
+        *   [实例方法](#实例方法-1)
+
+    *   [Methods](#methods)
+
+        *   [错误的例子](#错误的例子)
+        *   [应当避免的情况](#应当避免的情况)
+        *   [RESTful](#restful)
+        *   [绑定后的方法](#绑定后的方法)
+
+    *   [Paramters](#paramters)
+
+        *   [校验器](#校验器)
+        *   [默认错误信息](#默认错误信息)
+
+    *   [Middleware](#middleware)
+
+        *   [全局中间件](#全局中间件)
+        *   [私有中间件](#私有中间件)
+        *   [使用Express中间件](#使用express中间件)
+        *   [自带的日志中间件](#自带的日志中间件)
+
+*   [成功响应](#成功响应)
+
+*   [失败响应](#失败响应)
+
+*   [路由优先级](#路由优先级)
+
+*   [HTTP状态码](#http状态码)
+
+*   [HTML模板及静态目录](#html模板及静态目录)
 
 ## 简单示例
+
 ### 最小的示例
-``` javascript
+
+```javascript
 const { Server } = require('@totea/core')
 
 @Server()
@@ -24,7 +87,8 @@ service.start()  // the app will serve at localhost:3000
 ```
 
 ### 定义路由
-``` javascript
+
+```javascript
 const { Server， Get， Post, Delete, Put, Patch } = require('@totea/core')
 
 @Server()
@@ -61,7 +125,8 @@ service.start()
 ```
 
 ### 使用中间件
-``` javascript
+
+```javascript
 const { Server， Get， Middleware } = require('@totea/core')
 
 @Server()
@@ -86,7 +151,8 @@ service.start()
 ```
 
 ### 参数校验
-``` javascript
+
+```javascript
 const { Server， Get， Query } = require('@totea/core')
 
 @Server()
@@ -113,7 +179,8 @@ service.start()
 ```
 
 ### 子路由
-``` javascript
+
+```javascript
 const { Server， Get， Query， Controller } = require('@totea/core')
 
 // use controller define a sub-route
@@ -140,7 +207,8 @@ service.start()
 ```
 
 ## 安装使用
-``` bash
+
+```bash
 // 安装totea
 npm i @totea/core
 
@@ -162,27 +230,31 @@ npx babel-node index.js
 ## API
 
 ### Server
+
 ```javascript
 const { Server } = require('@totea/core')
 ```
-####  参数
+
+#### 参数
+
 **Server**装饰器用于定义一个Web服务器，包含以下参数:
 
-- **port** : 服务运行的端口，`integer`，默认3000，可接受的端口范围:1024-65535；
-- **middleware** : 全局中间件，`array<function>`，类型是包含一个或多个function的数组；
-- **errorMiddleware** : 全局错误处理中间件，`array<function>`，类型是包含一个或多个function的数组；
-- **controller** : 二级路由列表，`array<Controller|controller>`，可以提供Controller或者已经实例化后的controller数组；
-- **onServe** : 服务开始运行的钩子函数，`function`；
-- **onClose** : 服务结束运行的钩子函数，`function`；
-- **onResponse**:  请求响应前的回调函数，可以用于定制响应格式，`function`；
-- **slience** :  是否禁止打印log，，`boolean`，默认false；
--  **static** :  定义静态文件目录，`string|{path: string, maxAge: integer}`，可以接受string类型，表示目录，或者一个obejct， 参数会自动传给express.static()
--  **view**:  定义视图渲染模板,
-	-path:  模板文件夹，`string`， eg: './views'
-	-engine:  模板引擎 ，`object`，提供的值需要包含`__express`属性， eg: require('pug')
-	-type:  模板引擎名称，`string`，eg: 'pug'
+*   **port** : 服务运行的端口，`integer`，默认3000，可接受的端口范围:1024-65535；
+*   **middleware** : 全局中间件，`array<function>`，类型是包含一个或多个function的数组；
+*   **errorMiddleware** : 全局错误处理中间件，`array<function>`，类型是包含一个或多个function的数组；
+*   **controller** : 二级路由列表，`array<Controller|controller>`，可以提供Controller或者已经实例化后的controller数组；
+*   **onServe** : 服务开始运行的钩子函数，`function`；
+*   **onClose** : 服务结束运行的钩子函数，`function`；
+*   **onResponse**:  请求响应前的回调函数，可以用于定制响应格式，`function`；
+*   **slience** :  是否禁止打印log，，`boolean`，默认false；
+*   **static** :  定义静态文件目录，`string|{path: string, maxAge: integer}`，可以接受string类型，表示目录，或者一个obejct， 参数会自动传给express.static()
+*   **view**:  定义视图渲染模板,
+    \-path:  模板文件夹，`string`， eg: './views'
+    \-engine:  模板引擎 ，`object`，提供的值需要包含`__express`属性， eg: require('pug')
+    \-type:  模板引擎名称，`string`，eg: 'pug'
 
 #### example
+
 ```javascript
 const { Server， Get， Query， Controller } = require('@totea/core')
 
@@ -235,7 +307,9 @@ service.start()
 ```
 
 ### ToteaServer
+
 **ToteaServer** 经过Server装饰器包装后得到的类，也可以直接从totea中引用
+
 ```javascript
 const { ToteaServer } = require('@totea/core')
 
@@ -256,41 +330,46 @@ service.start()
 
 #### 实例属性
 
-- **app** : 创建的express实例；
-- **server** : 创建的http server；
-- **runing**: 获取当前服务运行状态，true表示正在运行；
-
+*   **app** : 创建的express实例；
+*   **server** : 创建的http server；
+*   **runing**: 获取当前服务运行状态，true表示正在运行；
 
 #### 实例方法
 
-- **start()** : 开始运行server；
-- **stop()** : 停止运行server；
-- **status()**: 获取当前服务运行状态，true表示正在运行；
-- **useController(`Controller|controller`)** : 注入二级路由，可以提供Controller或者已经实例化后的controller；
-- **use()** : 等同于express中的app.use；
-- **all()**: 等同于express中的app.all；
-- **get()** :等同于express中的app.get；
-- **post()**: 等同于express中的app.post；
-- **patch()** : 等同于express中的app.patch；
-- **delete()**: 等同于express中的app.delete；
-- **put()** : 等同于express中的app.put；
+*   **start()** : 开始运行server；
+*   **stop()** : 停止运行server；
+*   **status()**: 获取当前服务运行状态，true表示正在运行；
+*   **useController(`Controller|controller`)** : 注入二级路由，可以提供Controller或者已经实例化后的controller；
+*   **use()** : 等同于express中的app.use；
+*   **all()**: 等同于express中的app.all；
+*   **get()** :等同于express中的app.get；
+*   **post()**: 等同于express中的app.post；
+*   **patch()** : 等同于express中的app.patch；
+*   **delete()**: 等同于express中的app.delete；
+*   **put()** : 等同于express中的app.put；
 
 ### Controller
+
 ```javascript
 const { Controller } = require('@totea/core')
 ```
-#### 参数
-**Controller** 装饰器用于定义二级路由，包含以下参数：
-- **name** :  controller名称，`string`，不可包含`/`字符，我们默认会使用[humps](https://www.npmjs.com/package/humps)对名称进行格式化，转换为驼峰格式，绑定的路由路径将转换为小写字符，并用-相连
 
-	| Input     |    Name(`camelize`) | Path(`decamelize, separator: -`)  |
-	| :-------- | :--------:| --: |
-	| @Controller(''hello-world_route')  | helloWorldRoute |  /hello-world-route   |
-	| @Controller(''Phone')     |   phone |  /phone  |
-	| @Controller('/SubRoute')      |    subRoute | /sub-route  |
+#### 参数
+
+**Controller** 装饰器用于定义二级路由，包含以下参数：
+
+*   **name** :  controller名称，`string`，不可包含`/`字符，我们默认会使用[humps](https://www.npmjs.com/package/humps)对名称进行格式化，转换为驼峰格式，绑定的路由路径将转换为小写字符，并用-相连
+
+    | Input     |    Name(`camelize`) | Path(`decamelize, separator: -`)  |
+    | :-------- | :--------:| --: |
+    | @Controller(''hello-world_route')  | helloWorldRoute |  /hello-world-route   |
+    | @Controller(''Phone')     |   phone |  /phone  |
+    | @Controller('/SubRoute')      |    subRoute | /sub-route  |
 
 #### example
+
 下面这个例子演示了如何通过`this.controllers.${controllerName}`的方式在server或者每个controller中获取控制器实例，另外，在每个 controller 中可以通过`this.server`获取到server实例，这样极大的方便了代码复用
+
 ```javascript
 const { Server, Controller, Get } = require('../../index')
 
@@ -340,68 +419,70 @@ service.start()
 ```
 
 ### ToteaController
+
 **ToteaController** 经过Controller装饰器包装后得到的类，也可以直接从totea中引用
-```
-// 不使用装饰器的写法
-const { ToteaServer, ToteaController } = require('@totea/core')
 
-const controller = new ToteaController('child')
+    // 不使用装饰器的写法
+    const { ToteaServer, ToteaController } = require('@totea/core')
 
-const service = new ToteaServer({
-	controller: [controller]
-})
+    const controller = new ToteaController('child')
 
-service.start()
+    const service = new ToteaServer({
+    	controller: [controller]
+    })
 
-// 上面的例子等同于
-const { Server， Controller } = require('@totea/core')
+    service.start()
 
-@Controller('child')
-class ToteaController{}
+    // 上面的例子等同于
+    const { Server， Controller } = require('@totea/core')
 
-@Server()
-class ToteaServer{}
+    @Controller('child')
+    class ToteaController{}
 
-const service = new ToteaServer({
-	controller: [ToteaController]
-})
+    @Server()
+    class ToteaServer{}
 
-service.start()
-```
+    const service = new ToteaServer({
+    	controller: [ToteaController]
+    })
+
+    service.start()
 
 #### 实例属性
 
-- **router** : 该controller创建的Router实例；
-- **url** : 该controller绑定的url地址；
-- **name**: 该controller的名称；
-
+*   **router** : 该controller创建的Router实例；
+*   **url** : 该controller绑定的url地址；
+*   **name**: 该controller的名称；
 
 #### 实例方法
 
-- **getRouter()** : 返回该controller创建的Router实例；
-- **use()** : 等同于该控制器的router.use；
-- **all()**: 等同于该控制器的router.all；
-- **get()** :等同于该控制器的router.get；
-- **post()**: 等同于该控制器的router.post；
-- **patch()** : 等同于该控制器的router.patch；
-- **delete()**: 等同于该控制器的router.delete；
-- **put()** : 等同于该控制器的router.put；
+*   **getRouter()** : 返回该controller创建的Router实例；
+*   **use()** : 等同于该控制器的router.use；
+*   **all()**: 等同于该控制器的router.all；
+*   **get()** :等同于该控制器的router.get；
+*   **post()**: 等同于该控制器的router.post；
+*   **patch()** : 等同于该控制器的router.patch；
+*   **delete()**: 等同于该控制器的router.delete；
+*   **put()** : 等同于该控制器的router.put；
 
 > 由此可见Server装饰器其实也是一种Controler装饰器，它们具有基本一样的方法，区别是Server中，调用`use | all | get`等方法，会把路由绑定到app，而在controller中，是绑定到内部的router中。而在express中，app本来就是一个特殊的router，不是吗？
 
 阅读接下来的文档你可以发现，totea中的概念非常简单，它提供了基本一致的api以及尽量少的装饰器方法，对于开发者来说，非常容易掌握。
 
 ### Methods
+
 **Methods** 装饰器用于给Server或者Controller添加路由绑定，包含以下几个 ：
-	-  **Get** 绑定get请求
-	-  **Post** 绑定postt请求
-	-  **Delete** 绑定delete请求
-	-  **Patch** 绑定patch请求
-	-  **Put** 绑定put请求
+\-  **Get** 绑定get请求
+\-  **Post** 绑定postt请求
+\-  **Delete** 绑定delete请求
+\-  **Patch** 绑定patch请求
+\-  **Put** 绑定put请求
 参数： 表示绑定的路由地址，与 express中的地址一样，`string|regexp`，支持字符串或者正则表达式,可选，如果省略参数，则使用绑定的函数名称作为地址
 
 #### 错误的例子
+
 > 注意：同一个url和method不可以绑定给不同的函数，不同的url也不能绑定到同一个函数，它们必须时一一对应的，totea可以校验大部分的错误场景，但是有一些需要开发者从编码上去规范
+
 ```javascript
 @Server()
 class Service {
@@ -436,7 +517,9 @@ class Service {
 // will get a Error
 Error: the callback:getUser has already bound to url: /user, method: get
 ```
-####  应当避免的情况
+
+#### 应当避免的情况
+
 > 下面这个示例将不会报错，在同一个class中定义两个相同的方法似乎不是错的，但我们非常不建议这么做，这会使得代码逻辑非常混乱
 
 ```javascript
@@ -454,10 +537,12 @@ class Service {
 ```
 
 #### RESTful
+
 > 同一个url可以绑定给不同的函数，前提是使用不同的方法，比如@Get('/user') @Post('/user')可以分别绑定给不同方法，这常用于创建RESTful风格的api
 
 下面这个示例演示了使用totea创建restful风格的api接口
-``` javascript
+
+```javascript
 const { Server, Get, Post, Delete, Put } = require('@totea/core')
 
 // mock db
@@ -593,15 +678,17 @@ service.start()
 ```
 
 #### 绑定后的方法
+
 当该方法被绑定到指定的路由，对应的请求将会由该方法来负责响应，每个请求的上下文将通过参数的形式注入。所有的参数：
-	-  **req**: context.req
-	-  **res**: context.res
-	-  **next**: context.next
-	-  **query**: context.req.query
-	-  **body**: context.req.body
-	-  **headers**: context.req.headers
-	-  **params**: context.req.params
+\-  **req**: context.req
+\-  **res**: context.res
+\-  **next**: context.next
+\-  **query**: context.req.query
+\-  **body**: context.req.body
+\-  **headers**: context.req.headers
+\-  **params**: context.req.params
 所有的参数将会注入到一个context 对象中，并注入到方法的第一个参数
+
 ```javascript
 @Server()
 class Service {
@@ -612,15 +699,20 @@ class Service {
   }
 }
 ```
+
 ### Paramters
+
 **Paramters** 装饰器用于给请求添加参数过滤器，包含以下几个 ：
-	-  **Body** body过滤器
-	-  **Query** query过滤器
-	-  **Params** params过滤器
-	-  **Headers** headers过滤器
+\-  **Body** body过滤器
+\-  **Query** query过滤器
+\-  **Params** params过滤器
+\-  **Headers** headers过滤器
+
 #### 校验器
+
 第一个参数表示校验器，`必填`，支持以下几种类型：
-	-  `function` 参数是对应的请求内容,请看示例：
+\-  `function` 参数是对应的请求内容,请看示例：
+
 ```javascript
 const { Server, Get, Query, Body } = require('@totea/core')
 
@@ -646,9 +738,12 @@ class Service {
   }
 }
 ```
--  `tegund.ObjectT` 由[tegund](https://www.npmjs.com/package/tegund)创建的object
-totea中大量使用了tegund作为动态参数校验工具，它在常规的请求参数校验中同样非常有用
+
+*   `tegund.ObjectT` 由[tegund](https://www.npmjs.com/package/tegund)创建的object
+    totea中大量使用了tegund作为动态参数校验工具，它在常规的请求参数校验中同样非常有用。
+
 另外，totea框架本身依赖于tegund，这意味着你不用另外安装，可以直接引用，请看示例：
+
 ```javascript
 const { object, string, integer } = require('tegund')
 const { Server, Body, Query, Body } = require('@totea/core')
@@ -667,6 +762,7 @@ class Service {
   }
 }
 ```
+
 tegund将会校验参数，在校验失败时返回对应的错误信息，你只需要提供合适的校验器。
 甚至还可以省略object，直接：
 
@@ -679,6 +775,7 @@ tegund将会校验参数，在校验失败时返回对应的错误信息，你�
 ```
 
 对于更简单的情形，甚至可以这样：
+
 ```javascript
 
   @Body({
@@ -686,14 +783,17 @@ tegund将会校验参数，在校验失败时返回对应的错误信息，你�
 	age: 'integer'
   })
 ```
+
 更多的内容，请参阅[tegund说明文档](https://www.npmjs.com/package/tegund)
 
 #### 默认错误信息
+
 第二个参数用于指定一个默认的错误信息，`选填`，`string`类型
 错误信息的`优先级`是 校验器返回的错误信息 > 第二个参数指定的默认错误信息 > 对应httpError(没有特别指定的情况是400)的错误信息
 
-源代码如下：  
-``` javascript
+源代码如下：
+
+```javascript
 // result 表示校验器的返回值 errorMessage表示提供的默认错误信息
 if (result === false) {
   throw createHttpError(400, errorMessage)
@@ -712,12 +812,15 @@ if (typeof result === 'number') {
 }
 ```
 
-###  Middleware
+### Middleware
+
 **Middleware** 装饰器用于给Server和Controller添加全局中间件，或者给某个请求添加单独的中间件。
->中间件是express的核心，这在totea中同样重要，你可能发现了，上面讲到的Paramters参数校验器其实也是一种特殊的中间件，不是吗？
+
+> 中间件是express的核心，这在totea中同样重要，你可能发现了，上面讲到的Paramters参数校验器其实也是一种特殊的中间件，不是吗？
 
 #### 全局中间件
-``` javascript
+
+```javascript
 const { Server, Middleware } = require('@totea/core')
 
 @Server()
@@ -731,8 +834,10 @@ const { Server, Middleware } = require('@totea/core')
 })
 class ToteaServer{}
 ```
+
 同样可以为 controller添加：
-``` javascript
+
+```javascript
 const { Controller, Middleware } = require('@totea/core')
 
 @Controller('child')
@@ -748,8 +853,10 @@ class ChildController {}
 ```
 
 #### 私有中间件
+
 你可以给某个单独的路由添加私有中间件：
-``` javascript
+
+```javascript
 const { Server, Middleware } = require('@totea/core')
 
 @Server()
@@ -768,10 +875,12 @@ class ToteaServer{
 ```
 
 #### 使用Express中间件
+
 我们说过，totea使用express作为web服务器，我们没有修改任何底层的逻辑，这意味着可以直接使用所有针对Express开发的中间件
 
 示例，使用morgan来打印请求日志：
-``` javascript
+
+```javascript
 const { Server, Middleware } = require('@totea/core')
 const morgan = require('morgan')
 
@@ -779,9 +888,12 @@ const morgan = require('morgan')
 @Middleware(morgan('combined'))
 class ToteaServer{}
 ```
+
 #### 自带的日志中间件
+
 当然，totea 也自带了一个简单的日志打印中间件，使用方法：
-``` javascript
+
+```javascript
 const { Server, Logger, Get } = require('@totea/core')
 const morgan = require('morgan')
 
@@ -808,8 +920,10 @@ class Service{
 ```
 
 ## 成功响应
+
 在express中，一般使用req.send 或者 res.json来响应请求，该方法在totea中也同样适用：
-``` javascript
+
+```javascript
 @Server()
 class Service{
 	@Get('/user')
@@ -828,11 +942,13 @@ class Service{
 	}
 }
 ```
+
 在totea中，我们有更加便捷的方式来返回json，只需要把内容放在函数的返回值中：
 除json以外的请求，仍然需要使用res的方法来响应。
+
 > 注意，当函数没有返回值，或者返回undefined（在实际的代码中无法分辨），totea会视作请求为被正确响应，返回{ status: 500, message: "Internal Server Error" }
 
-``` javascript
+```javascript
 @Server()
 class Service{
 	@Get('/user')
@@ -858,10 +974,12 @@ class Service{
 	message: 'OK'
 }
 ```
+
 > totea劫持了res的sendFile和send方法，以便在请求响应前，获取到预计要返回的内容。同时，我们也规避了重复响应请求的问题。
 
 下面这个例子，当请求被res.json响应后，代码虽然会接着往下运行，但是不会再重复响应，当然，及时return是一个很好的编码习惯
-``` javascript
+
+```javascript
 @Server()
 class Service{
 	@Get('/user')
@@ -875,9 +993,12 @@ class Service{
 ```
 
 ## 失败响应
+
 相比成功的响应，在实际编码中，接口返回错误的情形要更为普遍，totea提供了多种方式来处理：
->totea中使用[http-errors](https://www.npmjs.com/package/http-errors)来创建httpError，你可以直接引入该库，或者直接使用createHttpError方法
-``` javascript
+
+> totea中使用[http-errors](https://www.npmjs.com/package/http-errors)来创建httpError，你可以直接引入该库，或者直接使用createHttpError方法
+
+```javascript
 const { Server, Get, createHttpError } = require('@totea/core')
 @Server()
 class Service {
@@ -945,6 +1066,7 @@ class Service {
 > Express并没有提供全局错误处理的方法，对于截获async/await抛出的异常尤为困难，totea默认使用[express-async-errors](https://www.npmjs.com/package/express-async-errors)，当截获未知错误时，始终返回一个{ status: 500, message: "Internal Server Error" }
 
 ## 路由优先级
+
 express 本身未提供路由优先级排序，路由的顺序决定于你的代码顺序。当使用express原生的方法来定义路由时，你的app可能存在不可触达的死区：
 
 ```javascript
@@ -962,8 +1084,11 @@ app.get('/user', (req, res) => {  // 死区
 
 app.listen(3000)
 ```
-这与我们预期的情况不符，我们希望具体路由先匹配，其次才是匹配式路由
+
+这与我们预期的情况不符，我们希望具体路由先匹配，其次才是匹配式路由。
+
 在totea中完全不需要担心这种情况，我们默认使用[sort-route-addresses](https://www.npmjs.com/package/sort-route-addresses)对路由的优先级进行了排序：
+
 ```javascript
 const { Server, Get } = require('@totea/core')
 
@@ -984,12 +1109,16 @@ const service = new Service()
 
 service.start()
 ```
+
 这个例子和上面完全一样，但是满足要求
 
 ## HTTP状态码
+
 totea的设计初衷心就是用于创建API服务器，用它来写接口将非常高效。
+
 在实际的开发过程中，我们的接口可能会被要求始终以200的状态码来返回数据，而实际的状态信息在返回的json中去体现。
 例如，客户端开发工程师可能会要求你这样设计接口：
+
 ```javascript
 // 当请求成功时
 Status status: 200 OK
@@ -998,7 +1127,9 @@ response: { status: 200, message: "OK", result: [{ name: 'leo' }] }
 Status status: 200 OK
 response: { status: 401, message: "Unauthorized" }
 ```
+
 这不得不说也是一种规范，但和主流的设计思想相悖，例如RESTful：
+
 ```javascript
 // 当请求成功时
 Status status: 200 OK
@@ -1007,10 +1138,13 @@ response: { result: [{ name: 'leo' }] }
 Status status: 401 Unauthorized
 response: null
 ```
+
 关于这个问题在V2EX上有过激烈的讨论，原文地址： [API 使用 HTTP 状态码还是全部返回 200](https://www.v2ex.com/t/191534), 每个开发者都有不同的理解
 
 totea默认使用第一种规范，但是允许开发者自定义响应，Server装饰器接受一个onResponse方法，该方法会在每次请求被返回前被调用，你可以提供一个自定义的方法去覆盖它。
+
 默认的onResponse方法是：
+
 ```javascript
 function onResponse({ res, status, result, message }) {
    res.json(
@@ -1025,7 +1159,9 @@ function onResponse({ res, status, result, message }) {
    )
  }
 ```
+
 假设你想使用RESTful的规范：
+
 ```javascript
 @Server({
 	onResponse: ({ res, status, result, message }) => {
@@ -1037,4 +1173,5 @@ class Service {}
 ```
 
 ## HTML模板及静态目录
+
 详细的例子请查看[地址](https://github.com/aim-leo/totea-core/tree/master/example/view)
