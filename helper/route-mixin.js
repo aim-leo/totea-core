@@ -1,8 +1,9 @@
 require('reflect-metadata')
 
 const createHttpError = require('http-errors')
-const { isObject } = require('tegund')
+const { isObject, isInteger, isString } = require('tegund')
 const routerOrder = require('sort-route-addresses')
+const httpMessage = require('statuses') // import from http-errors
 
 const { kidnapResSendKey } = require('../middleware/kidnap')
 
@@ -22,8 +23,12 @@ function overrideRoute(source, target) {
 }
 
 const routeMixin = {
-  _assignRouterFromDecorator() {
-    const slience = this._isToteaController ? this.server.silence : this.silence
+  _useDecorator() {
+    this._useGlobalMiddleware()
+
+    this._useRouterFromDecorator()
+  },
+  _useGlobalMiddleware() {
     // find out the global middleware
     const globalMiddlewareFromDecorator =
       Reflect.getMetadata('middlewareFromDecorator', this.constructor) || []
@@ -33,7 +38,8 @@ const routeMixin = {
     ) {
       this.use(...globalMiddlewareFromDecorator)
     }
-
+  },
+  _getRouteFromDecorator() {
     // get the router define at controler class
     const classRouteFromDecorator =
       Reflect.getMetadata('routeFromDecorator', this.constructor) || []
@@ -48,8 +54,15 @@ const routeMixin = {
       routeFromDecorator
     )
 
-    const toRankAddress = item => `${item.method.toUpperCase()} ${item.url}`
+    return routeFromDecorator
+  },
+  _useRouterFromDecorator() {
+    const server = this._isToteaController ? this.server : this
 
+    const routeFromDecorator = this._getRouteFromDecorator()
+    // eg: transfrom get('/route') to GET /route
+    const toRankAddress = item => `${item.method.toUpperCase()} ${item.url}`
+    // sort the route, the matching-routing will be place at last
     const sortedList = routerOrder(routeFromDecorator.map(toRankAddress))
 
     // get middleware define at decorator
@@ -60,6 +73,7 @@ const routeMixin = {
       const { method, url, callback, callbackName } = routeFromDecorator.filter(
         item => toRankAddress(item) === key
       )[0]
+
       if (typeof this[method] !== 'function') {
         continue
       }
@@ -67,9 +81,29 @@ const routeMixin = {
       // get middleware
       const middleware = middlewareFromDecorator[callbackName] || []
 
-      if (!slience) console.log(`[totea route]: ${method}`, this.url ? this.url + url : url)
+      if (server.silence !== true) {
+        console.log(`[totea route]: ${method}`, this.url ? this.url + url : url)
+      }
 
+      // add to route
       this[method](url, ...middleware, async (req, res, next) => {
+        function response(json) {
+          if (json.code === undefined) {
+            json.code = 200
+          }
+
+          if (json.message === undefined) {
+            json.message = httpMessage[json.code]
+          }
+
+          server.onResponse({
+            res,
+            status: json.code,
+            message: json.message,
+            result: json.result
+          })
+        }
+
         try {
           const result = await callback.call(this, {
             req,
@@ -81,19 +115,26 @@ const routeMixin = {
             params: req.params
           })
 
-          if (result instanceof Error) next(result)
-
+          // prevent response twice
           if (res.headersSent || res[kidnapResSendKey]) return
 
-          if (!result) {
+          if (result instanceof Error) {
+            return next(result)
+          }
+
+          if (result === undefined) {
             return next(createHttpError(500))
           }
 
-          if (isObject(result) && (result.message || result.code)) {
-            return res.json({ code: 200, ...result })
+          if (
+            isObject(result) &&
+            ((result.message && isString(result.message)) ||
+              isInteger(result.code))
+          ) {
+            return response(result)
           }
 
-          res.json({ code: 200, result, message: 'OK' })
+          response({ result })
         } catch (e) {
           next(e)
         }

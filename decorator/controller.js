@@ -4,7 +4,7 @@ const humps = require('humps')
 
 const { object } = require('tegund')
 
-const { routeMixin } = require('./mixin')
+const { routeMixin } = require('../helper/route-mixin')
 
 const express = require('../helper/express')
 
@@ -38,7 +38,7 @@ const Controller = (name, option = {}) => Target => {
     }
 
     getRouter() {
-      this._assignRouterFromDecorator()
+      this._useDecorator()
 
       return this._router
     }

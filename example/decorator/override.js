@@ -7,7 +7,7 @@ class Service {
     return { id: 1, name: 'leo' }
   }
 
-  @Get('/user') // override GET /user
+  @Get('/user') // GET /user
   @Override()
   getUser2() {
     return { id: 2, name: 'tony' }

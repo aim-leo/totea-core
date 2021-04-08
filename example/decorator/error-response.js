@@ -2,22 +2,26 @@ const { Server, Get, createHttpError } = require('../../index')
 
 @Server()
 class Service {
-  @Get('/error_res') // response by youself, got: {"code":401,"message":"Unauthorized"}
+  // response by youself, got: {"code":401,"message":"Unauthorized"}
+  @Get('/error_res')
   errorRes({ res }) {
     res.json({ code: 401, message: 'Unauthorized' })
   }
 
-  @Get('/error_code') // return a Promise.reject, got: {"code":404,"message":"Not Found"}
+  // return a Promise.reject， with a http code, got: {"code":404,"message":"Not Found"}
+  @Get('/error_code')
   errorCode() {
     return Promise.reject(404)
   }
 
-  @Get('/error_message') // return a Promise.reject, got: {"code":400,"message":"this is the invalid message"}
+  // return a Promise.reject, with a error message, got: {"code":400,"message":"this is the invalid message"}
+  @Get('/error_message')
   errorMessage() {
     return Promise.reject('this is the invalid message')
   }
 
-  @Get('/error_code_message') // return a Promise.reject, got: {"code":410,"message":"this is the invalid message"}
+  // return a Promise.reject, with http code and message, got: {"code":410,"message":"this is the invalid message"}
+  @Get('/error_code_message')
   errorCodeAndMessage() {
     return Promise.reject({
       status: 410,
@@ -25,14 +29,21 @@ class Service {
     })
   }
 
-  @Get('/http_error') // return a http error, got: {"code":401,"message":"Unauthorized"}
+  // return a http error, got: {"code":401,"message":"Unauthorized"}
+  @Get('/http_error')
   httpError() {
     return createHttpError(401)
   }
 
-  @Get('/return_simple_error') // return a normal error, got {"code":406,"message":"this is a error message"}
+  // throw a http error, got: {"code":401,"message":"Unauthorized"}
+  @Get('/http_error')
+  httpError() {
+    throw createHttpError(401)
+  }
+
+  // return a normal error, got {"code":406,"message":"this is a error message"}
+  @Get('/return_simple_error')
   returnSimpleError() {
-    // return a promise.reject
     const e = new Error('this is a error message')
 
     e.status = 406
@@ -40,9 +51,9 @@ class Service {
     return e
   }
 
-  @Get('/throw_simple_error') // throw a normal error, got {"code":406,"message":"this is a error message"}
+  // throw a normal error, got {"code":406,"message":"this is a error message"}
+  @Get('/throw_simple_error')
   throwSimpleError() {
-    // return a promise.reject
     const e = new Error('this is a error message')
 
     e.status = 406

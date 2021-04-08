@@ -43,8 +43,20 @@ function Parameter(paramType, validator, errorMessage) {
       const data = req[paramType]
       const result = validator(data)
 
-      if (result === false || result instanceof Error) {
-        throw createHttpError(400, errorMessage || result.message)
+      if (result === false) {
+        throw createHttpError(400, errorMessage)
+      }
+
+      if (result instanceof Error) {
+        throw createHttpError(400, result.message || errorMessage)
+      }
+
+      if (typeof result === 'string') {
+        throw createHttpError(400, result || errorMessage)
+      }
+
+      if (typeof result === 'number') {
+        throw createHttpError(result, errorMessage)
       }
 
       next()

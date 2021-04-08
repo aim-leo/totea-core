@@ -1,0 +1,15 @@
+{
+  "name": "totea-example-crud",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "babel-node index.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4"
+  },
+  "author": "",
+  "license": "ISC"
+}

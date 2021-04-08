@@ -1,12 +1,20 @@
 const path = require('path')
 const http = require('http')
 const createHttpError = require('http-errors')
-const { object, integer, string, array, func, boolean, removeEmpty } = require('tegund')
+const {
+  object,
+  integer,
+  string,
+  array,
+  func,
+  boolean,
+  removeEmpty
+} = require('tegund')
 
-const { routeMixin } = require('./mixin')
 const { kidnapRes } = require('../middleware/kidnap')
 
 const express = require('../helper/express')
+const { routeMixin } = require('../helper/route-mixin')
 
 const serverParamsInterface = object({
   port: integer().min(1024).max(65535).optional(),
@@ -22,39 +30,17 @@ const serverParamsInterface = object({
   controller: array('object', 'function').optional(),
   onServe: func().optional(),
   onClose: func().optional(),
+  onResponse: func().optional(),
   static: array(
     string(),
     object({ path: string(), maxAge: integer().optional() })
   ).optional(),
-  silence: boolean().optional()
+  silence: boolean().optional(),
 })
-
-function defaultErrorHandler(err, req, res, next) {
-  if (res.headersSent) return
-
-  if (typeof err === 'number') {
-    err = createHttpError(err)
-  } else if (typeof err === 'string') {
-    err = createHttpError(400, err)
-  } else if (typeof err === 'object' && typeof err.status === 'number') {
-    err = createHttpError(err.status, err.message)
-  }
-
-  if (!createHttpError.isHttpError(err)) {
-    err = createHttpError(500)
-  }
-
-  res.json({
-    code: err.status,
-    message: err.message
-  })
-}
 
 const Server = (params = {}) => Target => {
   serverParamsInterface.assert(params)
   return class extends Target {
-    static silence = false
-
     constructor(args = {}) {
       super()
 
@@ -64,30 +50,26 @@ const Server = (params = {}) => Target => {
 
       Object.assign(this, routeMixin)
 
-      // TODO params validate
       this.port = params.port || 3000
       this.view = params.view
       this.static = params.static
       this.middleware = params.middleware || []
       this.errorMiddleware = params.errorMiddleware || []
+      this.silence = params.silence || Server.silence
 
       this.onServeCallbacks = params.onServe ? [params.onServe] : []
       this.onCloseCallbacks = params.onClose ? [params.onClose] : []
+      this.onResponse = params.onResponse || this.onResponse
 
       this._controller = params.controller || []
-      this._silence = params.silence
 
-      this.controller = {}
+      this.controllers = {}
 
       this.init()
     }
 
     get runing() {
       return this.status()
-    }
-
-    get silence() {
-      return this._silence !== undefined ? this._silence : Server.silence
     }
 
     init() {
@@ -141,14 +123,14 @@ const Server = (params = {}) => Target => {
     start() {
       return new Promise((resolve, reject) => {
         // assign decorator
-        this._assignRouterFromDecorator()
+        this._useDecorator()
 
         // init controller
         if (this._controller.length > 0) {
           this._controller.forEach(item => {
             const c = this.useController(item)
 
-            this.controller[c.name] = c
+            this.controllers[c.name] = c
           })
         }
 
@@ -161,7 +143,7 @@ const Server = (params = {}) => Target => {
         })
 
         // error handler
-        this.app.use(defaultErrorHandler)
+        this.app.use(this._onHttpError.bind(this))
 
         // configure server
         this.server = http.createServer(this.app)
@@ -169,20 +151,20 @@ const Server = (params = {}) => Target => {
         this.server.listen(this.port)
         // set error callback
         this.server.on('error', (...args) => {
-          this._onError(...args)
+          this._onServerError(...args)
 
           reject()
         })
         // set serve callback
         this.server.on('listening', (...args) => {
-          this._onServe(...args)
+          this._onServeListening(...args)
 
           resolve()
         })
-        this.server.on('close', this._onClose.bind(this))
+        this.server.on('close', this._onServeClose.bind(this))
 
         process.on('SIGINT', () => {
-          this._onClose()
+          this._onServeClose()
 
           process.exit(0)
         })
@@ -219,7 +201,7 @@ const Server = (params = {}) => Target => {
 
       // if the controller is used
       if (
-        Object.values(this.controller).filter(
+        Object.values(this.controllers).filter(
           item => item.url === controller.url
         ).length > 0
       ) {
@@ -229,7 +211,7 @@ const Server = (params = {}) => Target => {
       }
 
       // assign controller to single controller
-      controller.controllers = this.controller
+      controller.controllers = this.controllers
 
       // assign server to single controller
       controller.server = this
@@ -239,7 +221,35 @@ const Server = (params = {}) => Target => {
       return controller
     }
 
-    _onError(error) {
+    onResponse({ res, status, result, message }) {
+      res.json(
+        removeEmpty({
+          code: status,
+          message: message,
+          result
+        })
+      )
+    }
+
+    _onHttpError(err, req, res, next) {
+      if (res.headersSent) return
+
+      if (typeof err === 'number') {
+        err = createHttpError(err)
+      } else if (typeof err === 'string') {
+        err = createHttpError(400, err)
+      } else if (typeof err === 'object' && typeof err.status === 'number') {
+        err = createHttpError(err.status, err.message)
+      }
+
+      if (!createHttpError.isHttpError(err)) {
+        err = createHttpError(500)
+      }
+
+      this.onResponse({ res, status: err.status, message: err.message })
+    }
+
+    _onServerError(error) {
       if (error.syscall !== 'listen') {
         throw error
       }
@@ -261,9 +271,9 @@ const Server = (params = {}) => Target => {
       }
     }
 
-    _onServe() {
+    _onServeListening() {
       const addr = this.server.address
-      if (!Server.silence) console.log(`Listening on port ${this.port}`)
+      if (!this.silence) console.log(`Listening on port ${this.port}`)
 
       // call onServe
       if (this.onServeCallbacks.length > 0) {
@@ -271,8 +281,8 @@ const Server = (params = {}) => Target => {
       }
     }
 
-    _onClose() {
-      if (!Server.silence) console.log(`Close listen on port ${this.port}`)
+    _onServeClose() {
+      if (!this.silence) console.log(`Close listen on port ${this.port}`)
 
       // call onClose
       if (this.onCloseCallbacks.length > 0) {

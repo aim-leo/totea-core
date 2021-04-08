@@ -29,6 +29,7 @@ class UserController {
 
 const service = new ToteaServer({
   port: 4000,
+  setStatusAtHeader: true,
   controller: [
     UserController
   ],

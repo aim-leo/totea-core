@@ -3,16 +3,6 @@ const humps = require('humps')
 
 const METHODS = ['Get', 'Post', 'Delete', 'Put', 'Patch']
 
-function findCallbackBind(routes, callback) {
-  for (const method in routes) {
-    for (const url in routes[method]) {
-      if (routes[method][url] === callback) {
-        return { method, url }
-      }
-    }
-  }
-}
-
 function Override() {
   return function (Target, key) {
     const overrideFromDecorator =

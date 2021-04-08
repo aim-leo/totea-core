@@ -3,7 +3,7 @@ const { Server, Controller, Get } = require('../../index')
 @Controller('childOne')
 class ChildOneController {
   @Get('/address') // GET /child-one/address
-  getData() {
+  getAlias() {
     return 'childOne'
   }
 }
@@ -11,12 +11,12 @@ class ChildOneController {
 @Controller('childTwo')
 class ChildTwoController {
   @Get('/address') // GET /child-two/address
-  getData() {
+  getAlias() {
     // run other controller's method
-    const childOneRes = this.controllers.childOne.getData()
+    const childOneRes = this.controllers.childOne.getAlias()
 
     // run root server's method
-    const rootRes = this.server.rootSimple()
+    const rootRes = this.server.getRootAlias()
     
     return rootRes + '/' + childOneRes
   }
@@ -26,8 +26,12 @@ class ChildTwoController {
   controller: [ChildOneController, ChildTwoController]
 })
 class Service {
-  @Get() // GET /root-simple
-  rootSimple() {
+  @Get() // GET /root
+  root() {
+    return 'get/' + this.controllers.childTwo.getAlias()
+  }
+
+  getRootAlias() {
     return 'root'
   }
 }
