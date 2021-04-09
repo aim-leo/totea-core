@@ -1,4 +1,3 @@
-const { Middleware } = require('../../decorator')
 const { Server, Controller, Get, Logger } = require('../../index')
 
 @Controller('childRoute')

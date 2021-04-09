@@ -1,0 +1,14 @@
+{
+  "name": "totea-core-doc",
+  "version": "1.0.0",
+  "author": "aim-leo",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.8.2"
+  },
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build",
+    "deploy": "bash deploy.sh"
+  }
+}

@@ -1,3 +1,6 @@
+const { func } = require('tegund')
+const { Middleware } = require('../decorator/middleware')
+
 function kidnap(targetObj, methodName, kidnapMethod) {
   const oldMethod = targetObj[methodName]
 
@@ -19,6 +22,16 @@ function kidnap(targetObj, methodName, kidnapMethod) {
   return newFunction
 }
 
+function createMiddlewareDecorator(callback) {
+  func().assert(callback)
+
+  return args =>
+    Middleware((req, res, next) => {
+      callback({ req, res, next, args })
+    })
+}
+
 module.exports = {
-  kidnap
+  kidnap,
+  createMiddlewareDecorator
 }
