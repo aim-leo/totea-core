@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>totea</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/totea-core/assets/css/0.styles.4a98494c.css" as="style"><link rel="preload" href="/totea-core/assets/js/app.b4fdf9f6.js" as="script"><link rel="preload" href="/totea-core/assets/js/2.164c4daf.js" as="script"><link rel="preload" href="/totea-core/assets/js/7.62bd49c4.js" as="script"><link rel="prefetch" href="/totea-core/assets/js/3.ebd2cf1a.js"><link rel="prefetch" href="/totea-core/assets/js/4.7974d278.js"><link rel="prefetch" href="/totea-core/assets/js/5.fe76296e.js"><link rel="prefetch" href="/totea-core/assets/js/6.a3f0e1fc.js"><link rel="prefetch" href="/totea-core/assets/js/8.247d51a0.js">
+    <link rel="stylesheet" href="/totea-core/assets/css/0.styles.4a98494c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/totea-core/" aria-current="page" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">totea</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Language Menu" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/totea-core/README.zh-CN.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/totea-core/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/aim-leo/totea-core/tree/master/example" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Examples
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/aim-leo/totea-core" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Language Menu" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Language Menu" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/totea-core/README.zh-CN.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/totea-core/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/aim-leo/totea-core/tree/master/example" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Examples
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/aim-leo/totea-core" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/totea-core/#introduction" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/totea-core/#example" class="sidebar-link">Example</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/totea-core/#minimal-example" class="sidebar-link">Minimal example</a></li><li class="sidebar-sub-header"><a href="/totea-core/#define-routing" class="sidebar-link">Define routing</a></li><li class="sidebar-sub-header"><a href="/totea-core/#use-middleware" class="sidebar-link">Use middleware</a></li><li class="sidebar-sub-header"><a href="/totea-core/#parameter-verification" class="sidebar-link">Parameter verification</a></li><li class="sidebar-sub-header"><a href="/totea-core/#sub-route" class="sidebar-link">Sub-route</a></li></ul></li><li><a href="/totea-core/#installation-and-use" class="sidebar-link">Installation and use</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/totea-core/#api" class="sidebar-link">API</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/totea-core/#server" class="sidebar-link">Server</a></li><li class="sidebar-sub-header"><a href="/totea-core/#toteaserver" class="sidebar-link">ToteaServer</a></li><li class="sidebar-sub-header"><a href="/totea-core/#controller" class="sidebar-link">Controller</a></li><li class="sidebar-sub-header"><a href="/totea-core/#toteacontroller" class="sidebar-link">ToteaController</a></li><li class="sidebar-sub-header"><a href="/totea-core/#methods" class="sidebar-link">Methods</a></li><li class="sidebar-sub-header"><a href="/totea-core/#paramters" class="sidebar-link">Paramters</a></li><li class="sidebar-sub-header"><a href="/totea-core/#middleware" class="sidebar-link">Middleware</a></li></ul></li><li><a href="/totea-core/#successful-response" class="sidebar-link">Successful response</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/totea-core/#failed-response" class="sidebar-link">Failed response</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/totea-core/#route-priority" class="sidebar-link">Route priority</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/totea-core/#http-status-code" class="sidebar-link">HTTP status code</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/totea-core/#html-templates-and-static-directories" class="sidebar-link">HTML templates and static directories</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/totea-core/#similar-framework" class="sidebar-link">Similar framework</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p align="center"><img width="320" src="/totea-core/logo.svg"></p> <h3 align="center">
+  Use decorators and javascript to build web services
+</h3> <br> <br> <br> <p>English | <a href="/totea-core/README.zh-CN.html">简体中文</a></p> <h2 id="introduction"><a href="#introduction" class="header-anchor">#</a> Introduction</h2> <p><strong>totea</strong> is a nodejs framework based on express, using decorators to define routing and middleware. Features overview:</p> <ul><li><strong>javascript</strong>: Existing frameworks that use decorators all use typescript by default, totea can be used in javascript, only need to introduce <a href="https://babeljs.io/docs/en/babel-plugin-proposal-decorators" target="_blank" rel="noopener noreferrer">plugin-proposal-decorators<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>;</li> <li><strong>Simple and efficient</strong>: totea provides less than 20 decorator functions, but it can support a variety of complex usage scenarios;</li> <li><strong>Easy to integrate</strong>: Totea uses express as a web server. We have not modified any underlying logic, which means that the methods and plugins that can be used in express can also be used in totea.</li></ul> <hr> <h2 id="example"><a href="#example" class="header-anchor">#</a> Example</h2> <h3 id="minimal-example"><a href="#minimal-example" class="header-anchor">#</a> Minimal example</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// the app will serve at localhost:3000</span>
+</code></pre></div><h3 id="define-routing"><a href="#define-routing" class="header-anchor">#</a> Define routing</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Post<span class="token punctuation">,</span> Delete<span class="token punctuation">,</span> Put<span class="token punctuation">,</span> Patch <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/root'</span><span class="token punctuation">)</span>
+  <span class="token function">getRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Post</span><span class="token punctuation">(</span><span class="token string">'/root'</span><span class="token punctuation">)</span>
+  <span class="token function">postRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Delete</span><span class="token punctuation">(</span><span class="token string">'/root'</span><span class="token punctuation">)</span>
+  <span class="token function">deleteRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Patch</span><span class="token punctuation">(</span><span class="token string">'/root'</span><span class="token punctuation">)</span>
+  <span class="token function">patchRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Put</span><span class="token punctuation">(</span><span class="token string">'/root'</span><span class="token punctuation">)</span>
+  <span class="token function">putRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="use-middleware"><a href="#use-middleware" class="header-anchor">#</a> Use middleware</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Middleware <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+@<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// global middleware</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call global middleware'</span><span class="token punctuation">)</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/root'</span><span class="token punctuation">)</span>
+  @<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Private middleware</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call specific middleware'</span><span class="token punctuation">)</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">getRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="parameter-verification"><a href="#parameter-verification" class="header-anchor">#</a> Parameter verification</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Query <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/root'</span><span class="token punctuation">)</span>
+  @<span class="token function">Query</span><span class="token punctuation">(</span><span class="token parameter">query</span> <span class="token operator">=&gt;</span> query<span class="token punctuation">.</span>id <span class="token operator">&amp;&amp;</span> quey<span class="token punctuation">.</span>id<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">// The id field must be included in req.query, the length is 10, otherwise it returns 400</span>
+  <span class="token function">getRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/root&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:400,&quot;message&quot;:&quot;Bad Request&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/root?id=1&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:400,&quot;message&quot;:&quot;Bad Request&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/root?id=1234567890&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;message&quot;:&quot;OK&quot;, &quot;result&quot;: 1}</span>
+</code></pre></div><h3 id="sub-route"><a href="#sub-route" class="header-anchor">#</a> Sub-route</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Query<span class="token punctuation">,</span> Controller <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// use controller define a sub-route</span>
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'childRoute'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ChildController</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/address'</span><span class="token punctuation">)</span> <span class="token comment">// GET /child-route/address</span>
+  <span class="token function">getAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'ok'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// then provide it to server</span>
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  controller<span class="token operator">:</span> <span class="token punctuation">[</span>ChildController<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/child-route/address&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;message&quot;:&quot;OK&quot;, &quot;result&quot;:'ok'}</span>
+</code></pre></div><h2 id="installation-and-use"><a href="#installation-and-use" class="header-anchor">#</a> Installation and use</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># install totea</span>
+<span class="token function">npm</span> i @totea/core
+
+<span class="token comment"># Install and configure babel</span>
+<span class="token function">npm</span> i @babel/core @babel/node @babel/plugin-proposal-decorators
+
+<span class="token comment"># If there is already a babel configuration, add a decorator plugin</span>
+<span class="token comment"># If not, create a babel configuration file in the project root directory and write the following:</span>
+module.exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins: <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">&quot;@babel/plugin-proposal-decorators&quot;</span>, <span class="token punctuation">{</span>legacy: <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>,
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Use babel-node to run and debug your code</span>
+npx babel-node index.js
+</code></pre></div><h2 id="api"><a href="#api" class="header-anchor">#</a> API</h2> <h3 id="server"><a href="#server" class="header-anchor">#</a> Server</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="parameters"><a href="#parameters" class="header-anchor">#</a> Parameters</h4> <p>The <strong>Server</strong> decorator is used to define a web server and contains the following parameters:</p> <ul><li><strong>port</strong>: The port on which the service runs, <code>integer</code>, default 3000, acceptable port range: 1024-65535;</li> <li><strong>middleware</strong>: global middleware, <code>array&lt;function&gt;</code>, the type is an array containing one or more functions;</li> <li><strong>errorMiddleware</strong>: global error handling middleware, <code>array&lt;function&gt;</code>, the type is an array containing one or more functions;</li> <li><strong>controller</strong>: The secondary routing list, <code>array&lt;Controller|controller&gt;</code>, which can provide Controller or an array of controllers that have been instantiated;</li> <li><strong>onServe</strong>: The hook function for the service to start running, <code>function</code>;</li> <li><strong>onClose</strong>: The hook function when the service ends, <code>function</code>;</li> <li><strong>onResponse</strong>: The callback function before the request response, which can be used to customize the response format, <code>function</code>;</li> <li><strong>slience</strong>: Whether to prohibit printing log, <code>boolean</code>, default false;</li> <li><strong>static</strong>: Define static file directory, <code>string|{path: string, maxAge: integer}</code>, can accept string type, which means directory, or an obejct, the parameter will be automatically passed to express.static()</li> <li><strong>view</strong>: Define the view rendering template,
+-path: template folder, <code>string</code>, eg:'./views'
+-engine: template engine, <code>object</code>, the provided value needs to include the <code>__express</code> attribute, eg: require('pug')
+-type: template engine name, <code>string</code>, eg:'pug'</li></ul> <h4 id="example-2"><a href="#example-2" class="header-anchor">#</a> example</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Query<span class="token punctuation">,</span> Controller <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'childRouteA'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ChildControllerA</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'childRouteB'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ChildControllerB</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  port<span class="token operator">:</span> <span class="token number">4000</span><span class="token punctuation">,</span>
+  <span class="token function">onServe</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'service is start success'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">onClose</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'service is closed'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  errorMiddleware<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token parameter">error<span class="token punctuation">,</span> req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'got a error'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span>
+      <span class="token function">next</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  middleware<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call global middleware'</span><span class="token punctuation">)</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  controller<span class="token operator">:</span> <span class="token punctuation">[</span>ChildControllerA<span class="token punctuation">,</span> ChildControllerB<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token keyword">static</span><span class="token operator">:</span> <span class="token string">'./public'</span><span class="token punctuation">,</span>
+  view<span class="token operator">:</span> <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">'./views'</span><span class="token punctuation">,</span>
+    engine<span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'pug'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">'pug'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  slience<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// You can also pass parameters when instantiating, the parameters here will be merged to cover the part that has been passed in the decorator</span>
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  slience<span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="toteaserver"><a href="#toteaserver" class="header-anchor">#</a> ToteaServer</h3> <p><strong>ToteaServer</strong> The class obtained after the Server decorator wraps, can also be directly quoted from totea:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> ToteaServer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ToteaServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// The above example is equivalent to</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> Server <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ToteaServer</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ToteaServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="instance-attributes"><a href="#instance-attributes" class="header-anchor">#</a> Instance attributes</h4> <ul><li><strong>app</strong>: the express instance created;</li> <li><strong>server</strong>: the created http server;</li> <li><strong>runing</strong>: Get the current service running status, true means it is running;</li></ul> <h4 id="example-method"><a href="#example-method" class="header-anchor">#</a> Example method</h4> <ul><li><strong>start()</strong>: Start running the server;</li> <li><strong>stop()</strong>: Stop running the server;</li> <li><strong>status()</strong>: Get the current service running status, true means it is running;</li> <li><strong>useController(<code>Controller|controller</code>)</strong>: Inject a secondary route, which can provide a Controller or an instantiated controller;</li> <li><strong>use()</strong>: equivalent to app.use in express;</li> <li><strong>all()</strong>: equivalent to app.all in express;</li> <li><strong>get()</strong>: equivalent to app.get in express;</li> <li><strong>post()</strong>: equivalent to app.post in express;</li> <li><strong>patch()</strong>: equivalent to app.patch in express;</li> <li><strong>delete()</strong>: equivalent to app.delete in express;</li> <li><strong>put()</strong>: equivalent to app.put in express;</li></ul> <h3 id="controller"><a href="#controller" class="header-anchor">#</a> Controller</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Controller <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="parameters-2"><a href="#parameters-2" class="header-anchor">#</a> Parameters</h4> <p>The <strong>Controller</strong> decorator is used to define secondary routes and contains the following parameters:</p> <ul><li><p><strong>name</strong>: controller name, <code>string</code>, cannot contain <code>/</code> characters, we will use <a href="https://www.npmjs.com/package/humps" target="_blank" rel="noopener noreferrer">humps<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> to format and convert the name by default In camel case format, the bound routing path will be converted to lowercase characters and connected with-</p> <table><thead><tr><th style="text-align:left;">Input</th> <th style="text-align:center;">Name(<code>camelize</code>)</th> <th style="text-align:right;">Path(<code>decamelize, separator: -</code>)</th></tr></thead> <tbody><tr><td style="text-align:left;">@Controller(``hello-world_route')</td> <td style="text-align:center;">helloWorldRoute</td> <td style="text-align:right;">/hello-world-route</td></tr> <tr><td style="text-align:left;">@Controller(''Phone')</td> <td style="text-align:center;">phone</td> <td style="text-align:right;">/phone</td></tr> <tr><td style="text-align:left;">@Controller('/SubRoute')</td> <td style="text-align:center;">subRoute</td> <td style="text-align:right;">/sub-route</td></tr></tbody></table></li></ul> <h4 id="example-3"><a href="#example-3" class="header-anchor">#</a> example</h4> <p>The following example demonstrates how to obtain a controller instance in the server or each controller through <code>this.controllers.${controllerName}</code>. In addition, in each controller, the server instance can be obtained through <code>this.server</code>. This greatly facilitates code reuse:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Controller<span class="token punctuation">,</span> Get <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../../index'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'childOne'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ChildOneController</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/address'</span><span class="token punctuation">)</span> <span class="token comment">// GET /child-one/address</span>
+  <span class="token function">getAlias</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'childOne'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'child-two'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ChildTwoController</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/address'</span><span class="token punctuation">)</span> <span class="token comment">// GET /child-two/address</span>
+  <span class="token function">getAlias</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// run other controller's method</span>
+    <span class="token keyword">const</span> childOneRes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>controllers<span class="token punctuation">.</span>childOne<span class="token punctuation">.</span><span class="token function">getAlias</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// run root server's method</span>
+    <span class="token keyword">const</span> rootRes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>server<span class="token punctuation">.</span><span class="token function">getRootAlias</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> rootRes <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> childOneRes
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  controller<span class="token operator">:</span> <span class="token punctuation">[</span>ChildOneController<span class="token punctuation">,</span> ChildTwoController<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// GET /root</span>
+  <span class="token function">root</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'get/'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>controllers<span class="token punctuation">.</span>childTwo<span class="token punctuation">.</span><span class="token function">getAlias</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getRootAlias</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'root'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/root&quot;</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:&quot;get/root/childOne&quot;,&quot;message&quot;:&quot;OK&quot;}</span>
+</code></pre></div><h3 id="toteacontroller"><a href="#toteacontroller" class="header-anchor">#</a> ToteaController</h3> <p><strong>ToteaController</strong> The class obtained after the Controller decorator wraps, can also be directly referenced from totea:</p> <p>How to write without decorators</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> ToteaServer<span class="token punctuation">,</span> ToteaController <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ToteaController</span><span class="token punctuation">(</span><span class="token string">'child'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ToteaServer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  controller<span class="token operator">:</span> <span class="token punctuation">[</span>controller<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>The above example is equivalent to</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Controller <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'child'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ToteaController</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ToteaServer</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ToteaServer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  controller<span class="token operator">:</span> <span class="token punctuation">[</span>ToteaController<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="instance-attributes-2"><a href="#instance-attributes-2" class="header-anchor">#</a> Instance attributes</h4> <ul><li><strong>router</strong>: Router instance created by the controller;</li> <li><strong>url</strong>: The url address bound to the controller;</li> <li><strong>name</strong>: the name of the controller;</li></ul> <h4 id="example-method-2"><a href="#example-method-2" class="header-anchor">#</a> Example method</h4> <ul><li><strong>getRouter()</strong>: Return the Router instance created by the controller;</li> <li><strong>use()</strong>: equivalent to router.use of the controller;</li> <li><strong>all()</strong>: equivalent to router.all of the controller;</li> <li><strong>get()</strong>: equivalent to router.get of the controller;</li> <li><strong>post()</strong>: equivalent to router.post of the controller;</li> <li><strong>patch()</strong>: equivalent to the router.patch of the controller;</li> <li><strong>delete()</strong>: equivalent to router.delete of the controller;</li> <li><strong>put()</strong>: equivalent to router.put of the controller;</li></ul> <blockquote><p>It can be seen that the Server decorator is actually a Controler decorator. They have basically the same methods. The difference is that in the Server, calling methods such as <code>use | all | get</code> will bind the route to the app, but in the controller , Is bound to the internal router. In express, the app is a special router, isn't it?</p></blockquote> <p>Reading the following documents, you can find that the concept in totea is very simple, it provides a basically consistent API and as few decorator methods as possible, which is very easy for developers to master.</p> <h3 id="methods"><a href="#methods" class="header-anchor">#</a> Methods</h3> <p><strong>Methods</strong> decorator is used to add routing binding to Server or Controller, including the following:</p> <ul><li><strong>Get</strong>: bind get request</li> <li><strong>Post</strong>: bind postt request</li> <li><strong>Delete</strong>: bind delete request</li> <li><strong>Patch</strong>: bind patch request</li> <li><strong>Put</strong>: bind put request</li></ul> <p>Parameters: Indicates the bound routing address, which is the same as the address in express, <code>string|regexp</code>, supports string or regular expression, optional, if the parameter is omitted, the bound function name will be used as the address.</p> <h4 id="examples-of-errors"><a href="#examples-of-errors" class="header-anchor">#</a> Examples of errors</h4> <blockquote><p>Note: The same url and method cannot be bound to different functions, and different urls cannot be bound to the same function. They must correspond one-to-one. Totea can check most error scenarios, but there are some Developers need to be standardized from coding.</p></blockquote> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> name<span class="token operator">:</span><span class="token string">'leo'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span> <span class="token comment">// ERROR, can not bind /user again</span>
+  <span class="token function">getUser2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>id<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> name<span class="token operator">:</span><span class="token string">'tony'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// will get a Error</span>
+Error<span class="token operator">:</span> the url<span class="token operator">:</span> <span class="token operator">/</span>user has already bound
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> name<span class="token operator">:</span><span class="token string">'leo'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user2'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">// ERROR, can not bind /user2 to getUser</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>id<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> name<span class="token operator">:</span><span class="token string">'tony'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// will get a Error</span>
+Error<span class="token operator">:</span> the callback<span class="token operator">:</span>getUser has already bound to url<span class="token operator">:</span> <span class="token operator">/</span>user<span class="token punctuation">,</span> method<span class="token operator">:</span> get
+</code></pre></div><h4 id="situations-to-avoid"><a href="#situations-to-avoid" class="header-anchor">#</a> Situations to avoid</h4> <blockquote><p>The following example will not report an error. It seems that it is not wrong to define two same methods in the same class, but we strongly do not recommend this, which will make the code logic very confusing.</p></blockquote> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">'leo'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// RIGHT, but not recommand</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">'tony'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="restful"><a href="#restful" class="header-anchor">#</a> RESTful</h4> <blockquote><p>The same URL can be bound to different functions, provided that different methods are used, such as @Get('/user') @Post('/user') can be bound to different methods respectively, which is often used to create RESTful style Api.</p></blockquote> <p>The following example demonstrates the use of totea to create a restful style api interface:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Post<span class="token punctuation">,</span> Delete<span class="token punctuation">,</span> Put <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// mock db</span>
+<span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">// eg {id: 1, name:'leo'}</span>
+<span class="token comment">// mock user.id self increasing</span>
+<span class="token keyword">let</span> lastCreateUserId <span class="token operator">=</span> <span class="token number">0</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> users
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">)</span>
+  <span class="token function">getUserById</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> params <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'please input user id'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> user <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>id <span class="token operator">===</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'this user is unexsist, please recheck'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> user
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Post</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">insertUser</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> body <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>body<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'please input a user name'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> user <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>name <span class="token operator">===</span> body<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'this user is created, please recheck'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// insert to db</span>
+    lastCreateUserId<span class="token operator">++</span>
+    <span class="token keyword">const</span> insertItem <span class="token operator">=</span> <span class="token punctuation">{</span>
+      id<span class="token operator">:</span> lastCreateUserId<span class="token punctuation">,</span>
+      name<span class="token operator">:</span> body<span class="token punctuation">.</span>name
+    <span class="token punctuation">}</span>
+    users<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>insertItem<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> insertItem
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Delete</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">)</span>
+  <span class="token function">deleteUserById</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> params <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'please input user id'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> userIndex <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token function">parseInt</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>userIndex <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'this user is unexsist, please recheck'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//delete</span>
+    <span class="token keyword">const</span> deleteItem <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>userIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> deleteItem
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Put</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">)</span>
+  <span class="token function">modifyUserById</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> params<span class="token punctuation">,</span> body <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'please input user id'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> userIndex <span class="token operator">=</span> users<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token function">parseInt</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>userIndex <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'this user is unexsist, please recheck'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>body<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'please input a user name'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// update</span>
+    <span class="token keyword">const</span> updateItem <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token operator">...</span>users<span class="token punctuation">[</span>userIndex<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> body<span class="token punctuation">.</span>name
+    <span class="token punctuation">}</span>
+    users<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>userIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> updateItem<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> updateItem
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:[],&quot;message&quot;:&quot;OK&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user/1&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:400,&quot;message&quot;:&quot;this user is unexsist, please recheck&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user&quot; -X POST</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:400,&quot;message&quot;:&quot;please input a user name&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user&quot; -X POST -H &quot;Content-type: application/json&quot; -d'{&quot;name&quot;: &quot;leo&quot;}'</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;leo&quot;},&quot;message&quot;:&quot;OK&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user&quot; -X POST -H &quot;Content-type: application/json&quot; -d'{&quot;name&quot;: &quot;leo&quot;}'</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:400,&quot;message&quot;:&quot;this user is created, please recheck&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user&quot; -X POST -H &quot;Content-type: application/json&quot; -d'{&quot;name&quot;: &quot;tony&quot;}'</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:{&quot;id&quot;:2,&quot;name&quot;:&quot;tony&quot;},&quot;message&quot;:&quot;OK&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;leo&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;tony&quot;} ],&quot;message&quot;:&quot;OK&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user/1&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;leo&quot;},&quot;message&quot;:&quot;OK&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user/1&quot; -X DELETE</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;leo&quot;},&quot;message&quot;:&quot;OK&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user/1&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:400,&quot;message&quot;:&quot;this user is unexsist, please recheck&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user/2&quot; -X PUT -H &quot;Content-type: application/json&quot; -d'{&quot;name&quot;: &quot;tom&quot;}'</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:{&quot;id&quot;:2,&quot;name&quot;:&quot;tom&quot;},&quot;message&quot;:&quot;OK&quot;}</span>
+
+<span class="token comment">// &gt;&gt;&gt;&gt;&gt; curl &quot;localhost:3000/user&quot; -X GET</span>
+<span class="token comment">// &lt;&lt;&lt;&lt;&lt; {&quot;status&quot;:200,&quot;result&quot;:[{&quot;id&quot;:2,&quot;name&quot;:&quot;tom&quot;}],&quot;message&quot;:&quot;OK&quot;}</span>
+</code></pre></div><h4 id="binding-method"><a href="#binding-method" class="header-anchor">#</a> Binding method</h4> <p>When this method is bound to the specified route, the corresponding request will be responded to by this method, and the context of each request will be injected in the form of parameters. All parameters:</p> <ul><li><strong>req</strong>: context.req</li> <li><strong>res</strong>: context.res</li> <li><strong>next</strong>: context.next</li> <li><strong>query</strong>: context.req.query</li> <li><strong>body</strong>: context.req.body</li> <li><strong>headers</strong>: context.req.headers</li> <li><strong>params</strong>: context.req.params
+All parameters will be injected into a context object and injected into the first parameter of the method.</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Post</span><span class="token punctuation">(</span><span class="token string">'/all_arg'</span><span class="token punctuation">)</span>
+  <span class="token function">getData</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res<span class="token punctuation">,</span> req<span class="token punctuation">,</span> next<span class="token punctuation">,</span> headers<span class="token punctuation">,</span> query<span class="token punctuation">,</span> body<span class="token punctuation">,</span> params <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// response with res.json</span>
+    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token number">2000</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'OK'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="paramters"><a href="#paramters" class="header-anchor">#</a> Paramters</h3> <p><strong>Paramters</strong> decorator is used to add parameter filters to the request, including the following:</p> <ul><li><strong>Body</strong> body filter</li> <li><strong>Query</strong> query filter</li> <li><strong>Params</strong> params filter</li> <li><strong>Headers</strong> headers filter</li></ul> <h4 id="validator"><a href="#validator" class="header-anchor">#</a> Validator</h4> <p>The first parameter represents the validator, <code>required</code>, which supports the following types:</p> <ul><li>The <code>function</code> parameter is the corresponding request content, please see the example:</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Query<span class="token punctuation">,</span> Body <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  @<span class="token function">Query</span><span class="token punctuation">(</span><span class="token parameter">query</span> <span class="token operator">=&gt;</span> query<span class="token punctuation">.</span>id <span class="token operator">&amp;&amp;</span> query<span class="token punctuation">.</span>id<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">// When req.query.id exists and the length is 10, it returns true, indicating that the verification passed, and if it fails, you will receive {status : 400, message: &quot;Bad Request&quot;}</span>
+  @<span class="token function">Body</span><span class="token punctuation">(</span><span class="token parameter">body</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Return string format, indicating error message, you will receive {status: 400, message: &quot;please provide a name&quot;}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>body<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">'please provide a name'</span>
+    <span class="token comment">// No return or return true, indicating that the test passed</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  @<span class="token function">Params</span><span class="token punctuation">(</span><span class="token parameter">params</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Return Error, indicating that http error will receive {status: 400, message: error.message&quot;}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>params<span class="token punctuation">.</span>address<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  @<span class="token function">Headers</span><span class="token punctuation">(</span><span class="token parameter">headers</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Return number format, which means http error status, you will receive {status: 401, message: &quot;Unauthorized&quot;}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>headers<span class="token punctuation">.</span>token<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">401</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li><code>tegund.ObjectT</code> is an object created by <a href="https://www.npmjs.com/package/tegund" target="_blank" rel="noopener noreferrer">tegund<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <p>Tegund is used extensively in totea as a dynamic parameter verification tool, which is also very useful in regular request parameter verification.</p> <p>In addition, the totea framework itself depends on tegund, which means that you don’t need to install it separately, you can quote it directly, please see the example:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> object<span class="token punctuation">,</span> string<span class="token punctuation">,</span> integer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'tegund'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Body<span class="token punctuation">,</span> Query<span class="token punctuation">,</span> Body <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  @<span class="token function">Body</span><span class="token punctuation">(</span>
+    <span class="token function">object</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// req.body.name must be a string and the length is 2-10</span>
+      age<span class="token operator">:</span> <span class="token function">integer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">// req.body.age must be a non-negative integer</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+  <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>tegund will verify the parameters and return the corresponding error message when the verification fails. You only need to provide a suitable verifier.</p> <p>You can even omit object and directly:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Body</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token function">integer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>For simpler cases, you can even do this:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Body</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token operator">:</span><span class="token string">'string'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span><span class="token string">'integer'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>For more information, please refer to <a href="https://www.npmjs.com/package/tegund" target="_blank" rel="noopener noreferrer">tegund documentation<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h4 id="default-error-message"><a href="#default-error-message" class="header-anchor">#</a> Default error message</h4> <p>The second parameter is used to specify a default error message, <code>optional</code>, <code>string</code> type</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Query<span class="token punctuation">,</span> Body <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// If you fail, you will receive {status: 400, message: &quot;expected a string id, length = 10&quot;}</span>
+  @<span class="token function">Query</span><span class="token punctuation">(</span>
+    <span class="token parameter">query</span> <span class="token operator">=&gt;</span> query<span class="token punctuation">.</span>id <span class="token operator">&amp;&amp;</span> query<span class="token punctuation">.</span>id<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token string">'expected a string id, length = 10'</span>
+  <span class="token punctuation">)</span>
+  <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>The <code>priority</code> of the error message is the error message returned by the validator&gt; the default error message specified by the second parameter&gt; the error message corresponding to httpError (400 if it is not specified).</p> <p>The source code is as follows:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// result represents the return value of the validator errorMessage represents the default error message provided</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token function">createHttpError</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> errorMessage<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token keyword">instanceof</span> <span class="token class-name">Error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token function">createHttpError</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> result<span class="token punctuation">.</span>message <span class="token operator">||</span> errorMessage<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> result <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token function">createHttpError</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> result <span class="token operator">||</span> errorMessage<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> result <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token function">createHttpError</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> errorMessage<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="middleware"><a href="#middleware" class="header-anchor">#</a> Middleware</h3> <p><strong>Middleware</strong> decorator is used to add global middleware to Server and Controller, or to add separate middleware to a request.</p> <blockquote><p>Middleware is the core of express, which is also important in totea. You may have discovered that the Paramters parameter validator mentioned above is actually a special kind of middleware, isn't it?</p></blockquote> <h4 id="global-middleware"><a href="#global-middleware" class="header-anchor">#</a> Global Middleware</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Middleware <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+@<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> req<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// The first global middleware</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call first global middleware of service'</span><span class="token punctuation">)</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+@<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> req<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Add another global middleware, which will be executed after the first middleware is executed</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call second global middleware of service'</span><span class="token punctuation">)</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ToteaServer</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><p>You can also add to the controller:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Controller<span class="token punctuation">,</span> Middleware <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'child'</span><span class="token punctuation">)</span>
+@<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> req<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// The first sub-route global middleware</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call first global middleware of service'</span><span class="token punctuation">)</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+@<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> req<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Add another sub-route global middleware, which will be executed after the first middleware is executed</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call second global middleware of service'</span><span class="token punctuation">)</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ChildController</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><h4 id="private-middleware"><a href="#private-middleware" class="header-anchor">#</a> Private middleware</h4> <p>You can add private middleware to a single route:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Middleware <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ToteaServer</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  @<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> req<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// The first private middleware</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call first middleware of /user'</span><span class="token punctuation">)</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  @<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> req<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Add another private middleware, which will be executed after the first middleware is executed</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call second middleware of /user'</span><span class="token punctuation">)</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="using-express-middleware"><a href="#using-express-middleware" class="header-anchor">#</a> Using Express middleware</h4> <p>As we said, totea uses express as a web server, we have not modified any underlying logic, which means that all middleware developed for Express can be used directly</p> <p>Example, use morgan to print the request log:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Middleware <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> morgan <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'morgan'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+@<span class="token function">Middleware</span><span class="token punctuation">(</span><span class="token function">morgan</span><span class="token punctuation">(</span><span class="token string">'combined'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ToteaServer</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><h4 id="built-in-log-middleware"><a href="#built-in-log-middleware" class="header-anchor">#</a> Built-in log middleware</h4> <p>Of course, totea also comes with a simple log printing middleware, how to use it:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span>Server<span class="token punctuation">,</span> Logger<span class="token punctuation">,</span> Get<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> morgan <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'morgan'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+@<span class="token function">Logger</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span><span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      result<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token string">&quot;docs&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">&quot;count&quot;</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;page&quot;</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot;limit&quot;</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      message<span class="token operator">:</span><span class="token string">'user query success!'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// logs</span>
+<span class="token punctuation">[</span>totea logger<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">2021</span><span class="token operator">-</span><span class="token number">04</span><span class="token operator">-</span><span class="token number">07</span>T09<span class="token operator">:</span><span class="token number">43</span><span class="token operator">:</span><span class="token number">18.836</span>Z <span class="token operator">/</span>user <span class="token constant">GET</span> <span class="token punctuation">{</span><span class="token string">&quot;status&quot;</span><span class="token operator">:</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token string">&quot;result&quot;</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">&quot;docs&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">&quot;count&quot;</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;page&quot;</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot; limit&quot;</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;message&quot;</span><span class="token operator">:</span><span class="token string">&quot;user query success!&quot;</span><span class="token punctuation">}</span> <span class="token number">11</span>ms
+
+<span class="token punctuation">[</span>totea logger<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">2021</span><span class="token operator">-</span><span class="token number">04</span><span class="token operator">-</span><span class="token number">07</span>T09<span class="token operator">:</span><span class="token number">45</span><span class="token operator">:</span><span class="token number">07.921</span>Z <span class="token operator">/</span>user <span class="token constant">GET</span> <span class="token punctuation">{</span><span class="token string">&quot;status&quot;</span><span class="token operator">:</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token string">&quot;result&quot;</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">&quot;docs&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">&quot;count&quot;</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;page&quot;</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot; limit&quot;</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;message&quot;</span><span class="token operator">:</span><span class="token string">&quot;user query success!&quot;</span><span class="token punctuation">}</span> <span class="token number">3</span>ms
+
+<span class="token punctuation">[</span>totea logger<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">2021</span><span class="token operator">-</span><span class="token number">04</span><span class="token operator">-</span><span class="token number">07</span>T09<span class="token operator">:</span><span class="token number">45</span><span class="token operator">:</span><span class="token number">08.684</span>Z <span class="token operator">/</span>user <span class="token constant">GET</span> <span class="token punctuation">{</span><span class="token string">&quot;status&quot;</span><span class="token operator">:</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token string">&quot;result&quot;</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">&quot;docs&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">&quot;count&quot;</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;page&quot;</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot; limit&quot;</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;message&quot;</span><span class="token operator">:</span><span class="token string">&quot;user query success!&quot;</span><span class="token punctuation">}</span> <span class="token number">1</span>ms
+
+<span class="token punctuation">[</span>totea logger<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">2021</span><span class="token operator">-</span><span class="token number">04</span><span class="token operator">-</span><span class="token number">07</span>T09<span class="token operator">:</span><span class="token number">45</span><span class="token operator">:</span><span class="token number">09.346</span>Z <span class="token operator">/</span>user <span class="token constant">GET</span> <span class="token punctuation">{</span><span class="token string">&quot;status&quot;</span><span class="token operator">:</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token string">&quot;result&quot;</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">&quot;docs&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">&quot;count&quot;</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;page&quot;</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot; limit&quot;</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;message&quot;</span><span class="token operator">:</span><span class="token string">&quot;user query success!&quot;</span><span class="token punctuation">}</span> <span class="token number">1</span>ms
+</code></pre></div><h2 id="successful-response"><a href="#successful-response" class="header-anchor">#</a> Successful response</h2> <p>In express, generally use req.send or res.json to respond to requests. This method is also applicable in totea:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'OK'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/page'</span><span class="token punctuation">)</span>
+  <span class="token function">getPage</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'&lt;p&gt;some html&lt;/p&gt;'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/html'</span><span class="token punctuation">)</span>
+  <span class="token function">getPage</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span><span class="token string">'test.html'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> root<span class="token operator">:</span> <span class="token string">'pages'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>In totea, we have a more convenient way to return json, just put the content in the return value of the function.
+For requests other than json, the res method still needs to be used to respond.</p> <blockquote><p>Note that when the function does not return a value, or returns undefined (which cannot be distinguished in the actual code), totea will treat the request as a correct response and return {status: 500, message: &quot;Internal Server Error&quot;}</p></blockquote> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span><span class="token punctuation">{</span>
+@<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+<span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">// The returned content will be wrapped in the form of {status: 200, message: &quot;OK&quot;, result: ${return}}</span>
+<span class="token keyword">return</span> <span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">'leo'</span><span class="token punctuation">,</span> address<span class="token operator">:</span><span class="token string">'XXX'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/json'</span><span class="token punctuation">)</span>
+<span class="token function">getPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment">// Assuming the return is an obejct, and has an integer type status, or there is a message with a non-empty string format, return the json</span>
+<span class="token keyword">return</span> <span class="token punctuation">{</span>
+status<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+result<span class="token operator">:</span> <span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">'leo'</span><span class="token punctuation">,</span> address<span class="token operator">:</span><span class="token string">'XXX'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+message<span class="token operator">:</span><span class="token string">'OK'</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Both of the above two requests will return the same content:</span>
+<span class="token punctuation">{</span>
+status<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+result<span class="token operator">:</span> <span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">'leo'</span><span class="token punctuation">,</span> address<span class="token operator">:</span><span class="token string">'XXX'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+message<span class="token operator">:</span><span class="token string">'OK'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>totea hijacks the sendFile and send methods of res in order to obtain the expected return content before requesting a response. At the same time, we have also avoided the problem of repeated responses to requests.</p></blockquote> <p>In the following example, after the request is responded to by res.json, although the code will continue to run down, it will not respond repeatedly. Of course, it is a good coding practice to return in time.</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res<span class="token punctuation">,</span> query <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>query<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token number">404</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'please provide a user id'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'leo'</span><span class="token punctuation">,</span> address<span class="token operator">:</span> <span class="token string">'XXX'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="failed-response"><a href="#failed-response" class="header-anchor">#</a> Failed response</h2> <p>Compared with a successful response, in actual coding, the interface returns an error situation is more common, totea provides a variety of ways to deal with:</p> <blockquote><p>Use <a href="https://www.npmjs.com/package/http-errors" target="_blank" rel="noopener noreferrer">http-errors<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> in totea to create httpError, you can import the library directly, or use the createHttpError method directly.</p></blockquote> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> createHttpError <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  <span class="token comment">// response by res, got: {&quot;status&quot;:401,&quot;message&quot;:&quot;Unauthorized&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/error_res'</span><span class="token punctuation">)</span>
+  <span class="token function">errorRes</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'Unauthorized'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// return a Promise.reject, with a http status, got: {&quot;status&quot;:404,&quot;message&quot;:&quot;Not Found&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/error_status'</span><span class="token punctuation">)</span>
+  <span class="token function">errorstatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// return a Promise.reject, with a error message, got: {&quot;status&quot;:400,&quot;message&quot;:&quot;this is the invalid message&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/error_message'</span><span class="token punctuation">)</span>
+  <span class="token function">errorMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'this is the invalid message'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// return a Promise.reject, with http status and message, got: {&quot;status&quot;:410,&quot;message&quot;:&quot;this is the invalid message&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/error_status_message'</span><span class="token punctuation">)</span>
+  <span class="token function">errorstatusAndMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      status<span class="token operator">:</span> <span class="token number">410</span><span class="token punctuation">,</span>
+      message<span class="token operator">:</span> <span class="token string">'this is the invalid message'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// return a http error, got: {&quot;status&quot;:401,&quot;message&quot;:&quot;Unauthorized&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/http_error'</span><span class="token punctuation">)</span>
+  <span class="token function">httpError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">createHttpError</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// throw a http error, got: {&quot;status&quot;:401,&quot;message&quot;:&quot;Unauthorized&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/http_error'</span><span class="token punctuation">)</span>
+  <span class="token function">throwHttpError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token function">createHttpError</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// return a normal error, got {&quot;status&quot;:406,&quot;message&quot;:&quot;this is a error message&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/return_simple_error'</span><span class="token punctuation">)</span>
+  <span class="token function">returnSimpleError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'this is a error message'</span><span class="token punctuation">)</span>
+
+    e<span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">406</span>
+
+    <span class="token keyword">return</span> e
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// throw a normal error, got {&quot;status&quot;:406,&quot;message&quot;:&quot;this is a error message&quot;}</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/throw_simple_error'</span><span class="token punctuation">)</span>
+  <span class="token function">throwSimpleError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'this is a error message'</span><span class="token punctuation">)</span>
+
+    e<span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">406</span>
+
+    <span class="token keyword">throw</span> e
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>Express does not provide a global error handling method. It is particularly difficult to intercept exceptions thrown by async/await. Totea uses [express-async-errors](https://www.npmjs.com/package/express-async- errors), when an unknown error is intercepted, a {status: 500, message: &quot;Internal Server Error&quot;} is always returned.</p></blockquote> <h2 id="route-priority"><a href="#route-priority" class="header-anchor">#</a> Route priority</h2> <p>Express itself does not provide routing priority ordering, the order of routing depends on your code order. When using express native methods to define routes, your app may have inaccessible dead zones:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/:id'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// All requests are responded here</span>
+  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token operator">:</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// dead zone</span>
+  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> user<span class="token operator">:</span> <span class="token string">'leo'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span>
+</code></pre></div><p>This is inconsistent with what we expected. We hope that specific routes will match first, followed by matching routes.</p> <p>There is no need to worry about this situation in totea. We use <a href="https://www.npmjs.com/package/sort-route-addresses" target="_blank" rel="noopener noreferrer">sort-route-addresses<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> to sort the priority of routes by default:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> Server<span class="token punctuation">,</span> Get <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@totea/core'</span><span class="token punctuation">)</span>
+
+@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/:id'</span><span class="token punctuation">)</span>
+  <span class="token function">getUserById</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res<span class="token punctuation">,</span> params <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token operator">:</span> params<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+  <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> user<span class="token operator">:</span> <span class="token string">'leo'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+service<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>This example is exactly the same as above, but meets the requirements.</p> <h2 id="http-status-code"><a href="#http-status-code" class="header-anchor">#</a> HTTP status code</h2> <p>The original intention of totea is to create an API server, and it will be very efficient to use it to write interfaces.</p> <p>In the actual development process, our interface may be required to always return data with a 200 status code, and the actual status information is reflected in the returned json.
+For example, a client development engineer may ask you to design an interface like this:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// When the request is successful</span>
+Status status<span class="token operator">:</span> <span class="token number">200</span> <span class="token constant">OK</span>
+response<span class="token operator">:</span> <span class="token punctuation">{</span>status<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span> result<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token operator">:</span><span class="token string">'leo'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+<span class="token comment">// When there is an error in the request, such as insufficient permissions</span>
+Status status<span class="token operator">:</span> <span class="token number">200</span> <span class="token constant">OK</span>
+response<span class="token operator">:</span> <span class="token punctuation">{</span>status<span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">}</span>
+</code></pre></div><p>It must be said that this is also a norm, but it is contrary to mainstream design ideas, such as RESTful:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// When the request is successful</span>
+Status status<span class="token operator">:</span> <span class="token number">200</span> <span class="token constant">OK</span>
+response<span class="token operator">:</span> <span class="token punctuation">{</span>result<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token operator">:</span><span class="token string">'leo'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+<span class="token comment">// When there is an error in the request, such as insufficient permissions</span>
+Status status<span class="token operator">:</span> <span class="token number">401</span> Unauthorized
+response<span class="token operator">:</span> <span class="token keyword">null</span>
+</code></pre></div><p>There have been heated discussions on this issue on V2EX, the original address: <a href="https://www.v2ex.com/t/191534" target="_blank" rel="noopener noreferrer">API uses HTTP status code or all return 200<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>, each developer has different understanding</p> <p>Totea uses the first specification by default, but allows developers to customize the response. The Server decorator accepts an onResponse method, which will be called before each request is returned. You can provide a custom method to override it.</p> <p>The default onResponse method is:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">onResponse</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res<span class="token punctuation">,</span> status<span class="token punctuation">,</span> result<span class="token punctuation">,</span> message <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>
+    <span class="token function">removeEmpty</span><span class="token punctuation">(</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment">// if some arg is undefined, will remove it</span>
+        status<span class="token operator">:</span> status<span class="token punctuation">,</span>
+        message<span class="token operator">:</span> message<span class="token punctuation">,</span>
+        result
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        removeNull<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        removeUndefined<span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Suppose you want to use the RESTful specification:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>@<span class="token function">Server</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">onResponse</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> res<span class="token punctuation">,</span> status<span class="token punctuation">,</span> result<span class="token punctuation">,</span> message <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span>
+    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> result<span class="token punctuation">,</span> message <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Service</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><h2 id="html-templates-and-static-directories"><a href="#html-templates-and-static-directories" class="header-anchor">#</a> HTML templates and static directories</h2> <p>For detailed examples, please see <a href="https://github.com/aim-leo/totea-core/tree/master/example/view" target="_blank" rel="noopener noreferrer">Address<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <h2 id="similar-framework"><a href="#similar-framework" class="header-anchor">#</a> Similar framework</h2> <ul><li><code>nestjs</code> <a href="https://www.npmjs.com/package/@nestjs/core" target="_blank" rel="noopener noreferrer">link<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> nestjs is a large and comprehensive framework with excellent design ideas. It needs to be used with typescript, which is suitable for developing large-scale projects.</li> <li><code>overnightjs</code><a href="https://www.npmjs.com/package/@overnightjs/core" target="_blank" rel="noopener noreferrer">link<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> The design idea of ​​overnightjs is similar to totea, the difference is that it needs to be used with typescript.</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/totea-core/assets/js/app.b4fdf9f6.js" defer></script><script src="/totea-core/assets/js/2.164c4daf.js" defer></script><script src="/totea-core/assets/js/7.62bd49c4.js" defer></script>
+  </body>
+</html>
