@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/aim-leo/totea-core/compare/v1.3.1...v1.4.0) (2021-04-09)
+
+
+### Features
+
+* add doc pages ([be3f4c9](https://github.com/aim-leo/totea-core/commit/be3f4c95f482f65a7436ff71670d70051b22e871))
+
 ### [1.3.1](https://github.com/aim-leo/totea-core/compare/v1.3.0...v1.3.1) (2021-04-08)
 
 ## [1.3.0](https://github.com/aim-leo/totea-core/compare/v1.2.0...v1.3.0) (2021-04-08)
