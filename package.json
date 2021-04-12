@@ -1,6 +1,6 @@
 {
   "name": "@totea/core",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "use decorator and js to build web server",
   "scripts": {
     "release": "standard-version && npm run push && npm run pub2npm",
